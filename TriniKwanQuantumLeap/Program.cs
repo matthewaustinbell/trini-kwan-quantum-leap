@@ -6,7 +6,8 @@ namespace TriniKwanQuantumLeap
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            DateTime today = DateTime.Today;
+            Console.WriteLine("Hello World!{0}", today);
         }
     }
 }
