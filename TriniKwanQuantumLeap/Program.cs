@@ -15,7 +15,7 @@ namespace TriniKwanQuantumLeap
             var event1 = new Event
             {
                 Location = "Nashville",
-                Date = "09/19/2019",
+                Date = new DateTime(2019, 09, 19),
                 Host = "Your Mom",
                 IsPutRight = false,
             };
@@ -24,7 +24,7 @@ namespace TriniKwanQuantumLeap
             var event2 = new Event
             {
                 Location = "Memphis",
-                Date = "09/19/1990",
+                Date = new DateTime(1990, 09, 19),
                 Host = "Larry King",
                 IsPutRight = false,
             };
@@ -33,7 +33,7 @@ namespace TriniKwanQuantumLeap
             var event3 = new Event
             {
                 Location = "Knoxville",
-                Date = "09/19/1800",
+                Date = new DateTime(1800, 09, 15),
                 Host = "Oprah Winfrey",
                 IsPutRight = false,
             };
@@ -51,6 +51,10 @@ namespace TriniKwanQuantumLeap
                 Console.WriteLine($"Made Right? {singleEvent.IsPutRight}");
                 Console.WriteLine();
             }
+
+            var distanceTest = eventRepository.DistanceBetweenDates(event3.Date, event2.Date);
+
+            Console.WriteLine(distanceTest);
 
         }
     }
