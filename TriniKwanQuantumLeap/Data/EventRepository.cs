@@ -14,6 +14,13 @@ namespace TriniKwanQuantumLeap.Data
             return _events;
         }
 
+        public Event GetSingleEvent(Guid eventId)
+        {
+            var singleEvent = _events.First(x => x.Id == eventId);
+
+            return singleEvent;
+        }
+
         public void AddEvent(Event eventToAdd)
         {
             eventToAdd.Id = Guid.NewGuid();
