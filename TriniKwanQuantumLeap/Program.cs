@@ -10,6 +10,26 @@ namespace TriniKwanQuantumLeap
     {
         static void Main(string[] args)
         {
+            //matt bell's code starts here 
+
+            var leapNumbers = new List<bool> { true, false, false, true, true, true, true, true };
+            int count = 0;
+            foreach (bool leap in leapNumbers)
+            {
+                count++;
+                var nextLeap = new Random().Next(99) % 8 == 0;
+                Console.WriteLine($"Leap to 199{count}: {!nextLeap}");
+            }
+            Console.WriteLine($"Number of leaps: {count}");
+            //may need this to be re-worked 
+            //take in the current Event.Date as a parameter,
+            //then call eventRepository.GetAllEvents(),
+            //and then filter out only the events that are after current Event.Date,
+            //select a random index and change its IsPutRight value to true
+
+
+
+
             // mark's code begin here
             Console.WriteLine("HELLO THERE! WOULD YOU LIKE TO TAKE A LEAP? REPLY WITH Y OR N");
             string answer = Console.ReadLine().ToUpper();
