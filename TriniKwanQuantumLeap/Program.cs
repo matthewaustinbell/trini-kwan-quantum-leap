@@ -10,10 +10,9 @@ namespace TriniKwanQuantumLeap
     {
         static void Main(string[] args)
         {
-<<<<<<< HEAD
-            var budget = new Budget();
-            budget.checkBalance();
-=======
+
+          
+           
             //Emily's code begins here
             Console.WriteLine("Hello Leaper! What's your name?");
             var nameInput = Console.ReadLine();
@@ -107,7 +106,6 @@ namespace TriniKwanQuantumLeap
                 Console.WriteLine($"Made Right? {singleEvent.IsPutRight}");
                 Console.WriteLine();
             }
->>>>>>> fa12a38b1b38d7f5a0b2e339524020853bab140a
         }
     }
 }

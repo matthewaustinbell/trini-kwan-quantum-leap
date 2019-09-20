@@ -13,6 +13,7 @@ namespace TriniKwanQuantumLeap
 
         public void checkBalance()
         {
+
             if (_initialBalance >= 1000)
             {
                 Console.WriteLine("Leap Authorized");
@@ -22,29 +23,31 @@ namespace TriniKwanQuantumLeap
             else
             {
                 Console.WriteLine("More funds required for leap. Would you like to add more funds? y/n");
-                var reply = Console.ReadLine();
-
-                while(reply != "y")
+                string reply = Console.ReadLine().ToUpper();
+                while (true)
                 {
-                    Console.WriteLine("Please reply with y or n");
-                    reply = Console.ReadLine();
-                    if (reply == "y")
+                    if (reply == "Y")
                     {
                         Console.WriteLine("Enter an amount greater than $1000");
                         LeapFunds = int.Parse(Console.ReadLine());
                         _initialBalance += LeapFunds;
                         Console.WriteLine($"${LeapFunds} has been added to your account. Your balance is {_initialBalance}. Leap Authorized!!!");
+                        break;
                         // call method that authorize leap
                         // deduct cos of leap
                     }
-                    else if (reply == "n")
+                    if (reply == "N")
                     {
                         Console.WriteLine("GoodLuck on your ventures");
+                        break;
                     }
+                    Console.WriteLine("Please reply with y or n");
+                    reply = Console.ReadLine().ToUpper();
                 }
-                
+
             }
-        }
+
+            }
         public void TotalLeapCost()
         {
 
