@@ -121,9 +121,15 @@ namespace TriniKwanQuantumLeap
                 eventDictionary.Add(i, eventRepository.GetAllEvents()[i]);
             }
 
-            Console.WriteLine("Mark's code");
+
             // mark's code begin here
-            Console.WriteLine("HELLO THERE! WOULD YOU LIKE TO TAKE A LEAP? REPLY WITH Y OR N");
+            Console.WriteLine(" After theorizing that time travel could happen within your own lifetime,\n" +
+                              " you stepped into the quantum Leap accelerator, and vanished.\n " +
+                              "When you awoke you found yourself trapped in he past,\n" +
+                              " facing a mirror image that was not your own.\n" +
+                              " Now driven by an unknown force to change history for the better\n" +
+                              " you are guided by AI (a Hologram that only you can see and hear).\n AI asks in a robotic voice... \n ");
+            Console.WriteLine("HELLO THERE! WOULD YOU LIKE TO TAKE A LEAP? REPLY WITH Y OR N\n");
             string answer = Console.ReadLine().ToUpper();
             while (true)
             {
