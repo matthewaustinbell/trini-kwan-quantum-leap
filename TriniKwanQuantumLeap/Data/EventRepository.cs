@@ -61,7 +61,7 @@ namespace TriniKwanQuantumLeap.Data
 
             var randomDayIndex = randomDay.Next(futureDays.Count);
 
-            futureDays[randomDayIndex].IsPutRight = true;
+            futureDays[randomDayIndex].IsPutRight = false;
 
             var adjustedDay = futureDays[randomDayIndex];
 

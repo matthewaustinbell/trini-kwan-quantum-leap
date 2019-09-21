@@ -23,9 +23,9 @@ namespace TriniKwanQuantumLeap
 
             var event1 = new Event
             {
-                Location = "The Moon Landing",
+                Location = "Moon Landing",
                 Date = new DateTime(2069, 07, 20),
-                Host = "That guy who had to stay in orbit",
+                Host = "Buzz Aldrin",
                 IsPutRight = false,
             };
             eventRepository.AddEvent(event1);
@@ -61,7 +61,7 @@ namespace TriniKwanQuantumLeap
             {
                 Location = "Signing of the Treaty of Versailles",
                 Date = new DateTime(1919, 06, 28),
-                Host = "Mookie Betts",
+                Host = "Woodrow Wilson",
                 IsPutRight = false,
             };
             eventRepository.AddEvent(event5);
@@ -86,7 +86,7 @@ namespace TriniKwanQuantumLeap
 
             var event8 = new Event
             {
-                Location = "Frito-Lay stops making Doritos 3D",
+                Location = "Day Frito-Lay stops making Doritos 3D",
                 Date = new DateTime(2092, 02, 16),
                 Host = "Someone who really freakin' loves Doritos 3D",
                 IsPutRight = false,
@@ -104,7 +104,7 @@ namespace TriniKwanQuantumLeap
 
             var event10 = new Event
             {
-                Location = "THe Chernobyl Disaster",
+                Location = "Chernobyl Disaster",
                 Date = new DateTime(1986, 04, 26),
                 Host = "Anatoly Dyatlov",
                 IsPutRight = false,
@@ -124,8 +124,8 @@ namespace TriniKwanQuantumLeap
 
             // mark's code begin here
             Console.WriteLine(" After theorizing that time travel could happen within your own lifetime,\n" +
-                              " you stepped into the quantum Leap accelerator, and vanished.\n " +
-                              "When you awoke you found yourself trapped in he past,\n" +
+                              " you stepped into the Quantum Leap accelerator, and vanished.\n " +
+                              "When you awoke you found yourself trapped in the past,\n" +
                               " facing a mirror image that was not your own.\n" +
                               " Now driven by an unknown force to change history for the better\n" +
                               " you are guided by AI (a Hologram that only you can see and hear).\n AI asks in a robotic voice... \n ");
@@ -162,22 +162,23 @@ namespace TriniKwanQuantumLeap
                     var attemptedLeap = eventRepository.DaysBetweenEvents(eventRepository.StartingDate(), chosenLeap.Date);
 
                     // Uses TimeSpan, that's where .Days comes from 
-                    Console.WriteLine($"Days to leap {Math.Abs(attemptedLeap.Days)}");
+                    Console.WriteLine($"Days to leap: {Math.Abs(attemptedLeap.Days)}");
 
                     // Prints cost to leap between two dates
-                    Console.WriteLine($"Cost to leap ${budget.TotalLeapCost(attemptedLeap)}");
+                    Console.WriteLine($"Cost to leap: ${budget.TotalLeapCost(attemptedLeap)}");
 
                 // Checks budget
                 budget.checkBalance(budget.TotalLeapCost(attemptedLeap), chosenLeap);
 
                 leaperRepository.TakeTheLeap(chosenLeap, myLeaper);
 
-                Console.WriteLine($"You've taken the leap and your host is {myLeaper.CurrentEventObj.Host}");
+                Console.WriteLine($"You are now inhabiting the body of {myLeaper.CurrentEventObj.Host}.");
 
+                Console.WriteLine("You arrived just in time to make this situation right.");  
 
                 var futureDateToChange = eventRepository.UpdateEvent(chosenLeap.Date);
 
-                Console.WriteLine($"{futureDateToChange.Location} has been made right! {futureDateToChange.IsPutRight}");
+                Console.WriteLine($"However, your actions have also changed the {futureDateToChange.Location}. Take heed. Every action you take throughout time can change the course of history.");
 
                     break;
 
@@ -185,14 +186,6 @@ namespace TriniKwanQuantumLeap
                 Console.WriteLine("Please reply with y or n");
                 answer = Console.ReadLine().ToUpper();
             }
-
-
-            Console.WriteLine("Matt Gill's code");
-            // Matt Gill's code begins here
-
-
-            //Console.WriteLine(distanceTest);
-           // var distanceTest = eventRepository.DistanceBetweenDates(event3.Date, event2.Date);
 
         }
     }
