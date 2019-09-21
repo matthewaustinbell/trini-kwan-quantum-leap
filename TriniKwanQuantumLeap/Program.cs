@@ -121,13 +121,11 @@ namespace TriniKwanQuantumLeap
                 eventDictionary.Add(i, eventRepository.GetAllEvents()[i]);
             }
 
-            Console.WriteLine("Mark's code");
-            // mark's code begin here
             void LeapPrompt()
             {
                 Console.WriteLine("HELLO THERE! WOULD YOU LIKE TO TAKE A LEAP? REPLY WITH Y OR N");
                 string answer = Console.ReadLine().ToUpper();
-                while (true)
+               while (true)
                 {
                     var budget = new Budget();
                     if (answer == "N")
@@ -183,28 +181,41 @@ namespace TriniKwanQuantumLeap
                 }
             }
 
-            void ExecuteProgram()
+            void Prompter()
             {
-                LeapPrompt();
                 Console.WriteLine("1. Make another leap");
                 Console.WriteLine("2. See leap history");
-                Console.WriteLine("3. Add funds to my account");
+                Console.WriteLine("3. End Journey");
                 int resp = int.Parse(Console.ReadLine());
-                if (resp == 1)
-                {
-                    LeapPrompt();
-                }
-                else if (resp == 2)
-                {
-                    leaperRepository.GetLeapHistory(myLeaper);
-                }
-                else if (resp == 3)
-                {
-                    Console.WriteLine("Budget stuff here");
-                }
+                ExecuteProgram(resp);
             }
 
-            ExecuteProgram();
+
+
+            void ExecuteProgram(int response)
+            {
+           // while (true)
+               // {
+                    if (response == 1)
+                    {
+                        LeapPrompt();
+                        Prompter();
+                    }
+                    else if (response == 2)
+                    {
+                        leaperRepository.GetLeapHistory(myLeaper);
+                        Prompter();
+                    }
+                    else if (response == 3)
+                    {
+                        Console.WriteLine("Adios!");
+                        return;
+                    }
+               // }                
+            }
+
+            LeapPrompt();
+            Prompter();
 
         }
     }
