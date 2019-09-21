@@ -54,28 +54,68 @@ namespace TriniKwanQuantumLeap
 
             var event4 = new Event
             {
-                Location = "Future 1",
-                Date = new DateTime(2000, 09, 15),
-                Host = "Oprah Winfrey",
+                Location = "Seattle",
+                Date = new DateTime(1967, 08, 20),
+                Host = "Ed Dickson",
                 IsPutRight = false,
             };
             eventRepository.AddEvent(event4);
+
             var event5 = new Event
             {
-                Location = "Future 2",
-                Date = new DateTime(2010, 09, 15),
-                Host = "Oprah Winfrey",
+                Location = "Boston",
+                Date = new DateTime(2003, 09, 17),
+                Host = "Mookie Betts",
                 IsPutRight = false,
             };
             eventRepository.AddEvent(event5);
+
             var event6 = new Event
             {
-                Location = "Future 3",
-                Date = new DateTime(2020, 09, 15),
-                Host = "Oprah Winfrey",
+                Location = "Los Angeles",
+                Date = new DateTime(2080, 02, 08),
+                Host = "Magic Johnson",
                 IsPutRight = false,
             };
             eventRepository.AddEvent(event6);
+
+            var event7 = new Event
+            {
+                Location = "Toledo",
+                Date = new DateTime(1974, 02, 09),
+                Host = "",
+                IsPutRight = false,
+            };
+            eventRepository.AddEvent(event7);
+
+            var event8 = new Event
+            {
+                Location = "Raleigh",
+                Date = new DateTime(2092, 02, 16),
+                Host = "Clay Aiken",
+                IsPutRight = false,
+            };
+            eventRepository.AddEvent(event8);
+
+            var event9 = new Event
+            {
+                Location = "St. Petersburg",
+                Date = new DateTime(2054, 02, 04),
+                Host = "Ji-man Choi",
+                IsPutRight = false,
+            };
+            eventRepository.AddEvent(event9);
+
+            var event10 = new Event
+            {
+                Location = "Indianapolis",
+                Date = new DateTime(2024, 02, 02),
+                Host = "Jacob Brissett",
+                IsPutRight = false,
+            };
+            eventRepository.AddEvent(event10);
+
+
 
             // Creates a Dictionary and adds each event to it
             Dictionary<int, Event> eventDictionary = new Dictionary<int, Event>();
@@ -125,95 +165,25 @@ namespace TriniKwanQuantumLeap
                     // Prints cost to leap between two dates
                     Console.WriteLine($"Cost to leap ${budget.TotalLeapCost(attemptedLeap)}");
                     // Checks budget
-                    budget.checkBalance(budget.TotalLeapCost(attemptedLeap), chosenLeap);
-                    //break;
-                    // Need to reconcile TotalCostToLeap with budget.checkBalance
-                    // Outcome will determine if the user can make the leap or not
                 // Checks budget
-                budget.checkBalance(budget.TotalLeapCost(attemptedLeap), chosenLeap);
+                    budget.checkBalance(budget.TotalLeapCost(attemptedLeap), chosenLeap);
 
-                leaperRepository.TakeTheLeap(chosenLeap, myLeaper);
+                    leaperRepository.TakeTheLeap(chosenLeap, myLeaper);
 
-                Console.WriteLine($"You've taken the leap and your host is {myLeaper.CurrentEventObj.Host}");
-
-                break;
-
-                    //Emily's code begins here
-                    Console.WriteLine("Emily's code");
-                    Console.WriteLine("Hello Leaper! What's your name?");
-                    var nameInput = Console.ReadLine();
-
-                    Console.WriteLine("Where are you currently located?");
-                    var locationInput = Console.ReadLine();
-
-                    var currentDate = DateTime.Now;
-                    var currentHost = nameInput;
-                    var currentLocation = locationInput;
-                    var IsPutRight = true;
-                    var randomGuid = Guid.NewGuid();
-                    // Make the five variables above into an object and assign it as the Leaper's CurrentEventObj
-
-                    // add the Leaper to the LeaperRepo
-
-                    Console.WriteLine($"Welcome, {nameInput}. To which event would you like to travel? " +
-                        "              Type the Event Id of the Event to which you'd like to travel and press enter.");
-
-                    // Loop over all events in our event list and print the following for each:
-                    // Event Id: {Event.Id}
-                    // Date: {Event.Date}
-                    // Location: {Event.Location}
-                    // Host: {Event.Host}
-
-                    // var eventObjectToLeapTo = *find the event Object using the Id they entered above*
-                    // var activeLeaper = *our current leaper*
-
-                    // ----> Commented out so code will compile <----
-                    //LeaperRepository.AttemptLeap(/*eventObjectToLeapTo, activeLeaper*/);
-                    // ----> Commented out so code will compile <----
-
-                    // The AttemptLeapMethod above will return 'true' if leap can be made or 'false' if more funds are needed
-                    // If true:
-                    Console.WriteLine("Congratulations! You made it to {Event.Description} in {Event.Location} on {Event.Date}. " +
-                            "Operating as {Event.Host}, you were able to fix this situation and change the course of history.");
-
-                    Console.WriteLine("Would you like to leap again? (y/n)");
-                    // If yes, somehow... start again?
-
-                    // If false:
-                    Console.WriteLine("Enter the amount of money you would like to add to your budget.");
-
-                    var amountToAddToBudget = Console.ReadLine();
-                    // var amountInIntegerForm = function to make their input an integer
-
-                    // create a method in the budget class that takes the value and adds it to the budget.
+                    Console.WriteLine($"You've taken the leap and your host is {myLeaper.CurrentEventObj.Host}");
 
 
+                    var futureDateToChange = eventRepository.UpdateEvent(chosenLeap.Date);
 
+                    Console.WriteLine($"{futureDateToChange.Location} has been made right! {futureDateToChange.IsPutRight}");
 
-                    Console.WriteLine("Matt Gill's code");
-                    // Matt Gill's code begins here
-
-                    foreach (var singleEvent in allEvents)
-                    {
-                        Console.WriteLine($"Location: {singleEvent.Location}");
-                        Console.WriteLine($"Date: {singleEvent.Date}");
-                        Console.WriteLine($"Host: {singleEvent.Host}");
-                        Console.WriteLine($"Made Right? {singleEvent.IsPutRight}");
-                        Console.WriteLine();
-                    }
-                    var currentDateTest = eventRepository.UpdateEvent(event2.Date);
-
-                    Console.WriteLine($"{currentDateTest.Location} has been made right! {currentDateTest.IsPutRight}");
+                    break;
 
                 }
                 Console.WriteLine("Please reply with y or n");
                 answer = Console.ReadLine().ToUpper();
-
                 
             }
-
-
-           
 
         }
     }
