@@ -121,13 +121,21 @@ namespace TriniKwanQuantumLeap
                 eventDictionary.Add(i, eventRepository.GetAllEvents()[i]);
             }
 
+            // Checks if the leaper has leaped yet 
+            // If they have and leap again the "would you like to leap" prompt is skipped
+            int leapCount = 0;
+
             void LeapPrompt()
             {
-                Console.WriteLine("HELLO THERE! WOULD YOU LIKE TO TAKE A LEAP? REPLY WITH Y OR N");
-                string answer = Console.ReadLine().ToUpper();
+
                while (true)
                 {
                     var budget = new Budget();
+
+                    Console.WriteLine((leapCount == 0 ? "HELLO THERE! WOULD YOU LIKE TO TAKE A LEAP? REPLY WITH Y OR N" : null));
+                    string answer = (leapCount == 0 ? Console.ReadLine().ToUpper() : "Y");
+                    
+
                     if (answer == "N")
                     {
                         Console.WriteLine("FINE! BE BORING!");
@@ -166,7 +174,7 @@ namespace TriniKwanQuantumLeap
 
                         leaperRepository.TakeTheLeap(chosenLeap, myLeaper);
 
-                        Console.WriteLine($"You've taken the leap and your host is {myLeaper.CurrentEventObj.Host}");
+                        Console.WriteLine($"You've taken the leap and your host is {myLeaper.CurrentEventObj.Host}.");
 
 
                         var futureDateToChange = eventRepository.UpdateEvent(chosenLeap.Date);
@@ -194,8 +202,6 @@ namespace TriniKwanQuantumLeap
 
             void ExecuteProgram(int response)
             {
-           // while (true)
-               // {
                     if (response == 1)
                     {
                         LeapPrompt();
@@ -210,11 +216,11 @@ namespace TriniKwanQuantumLeap
                     {
                         Console.WriteLine("Adios!");
                         return;
-                    }
-               // }                
+                    }              
             }
 
             LeapPrompt();
+            leapCount++;
             Prompter();
 
         }
