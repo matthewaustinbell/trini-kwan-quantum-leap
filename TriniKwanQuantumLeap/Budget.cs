@@ -11,7 +11,7 @@ namespace TriniKwanQuantumLeap
         public int FinalBalance { get; set; }
         public int LeapFunds { get; set; }
 
-        public void checkBalance(int leapCost)
+        public void checkBalance()
         {
 
             if (_initialBalance >= 1000)
