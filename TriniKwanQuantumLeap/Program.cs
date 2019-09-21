@@ -123,72 +123,88 @@ namespace TriniKwanQuantumLeap
 
             Console.WriteLine("Mark's code");
             // mark's code begin here
-            Console.WriteLine("HELLO THERE! WOULD YOU LIKE TO TAKE A LEAP? REPLY WITH Y OR N");
-            string answer = Console.ReadLine().ToUpper();
-            while (true)
+            void LeapPrompt()
             {
-                var budget = new Budget();
-                if (answer == "N")
+                Console.WriteLine("HELLO THERE! WOULD YOU LIKE TO TAKE A LEAP? REPLY WITH Y OR N");
+                string answer = Console.ReadLine().ToUpper();
+                while (true)
                 {
-                    Console.WriteLine("FINE! BE BORING!");
-                    break;
-                }
-
-                if (answer == "Y")
-                {
-                    // Loops through the dictionary and prints each event, also adds 1 to each Key so 
-                    // that they don't start with 0
-                    foreach (var singleEvent in eventDictionary)
+                    var budget = new Budget();
+                    if (answer == "N")
                     {
-                        Console.WriteLine($"{singleEvent.Key + 1} Location: {singleEvent.Value.Location}");
-                        Console.WriteLine($"Date: {singleEvent.Value.Date}");
-                        Console.WriteLine($"Host: {singleEvent.Value.Host}");
-                        Console.WriteLine($"Made Right? {singleEvent.Value.IsPutRight}");
-                        Console.WriteLine();
+                        Console.WriteLine("FINE! BE BORING!");
+                        break;
                     }
-                    // Expects the user to enter the number associated with the event  
-                    // and subtracts 1 to match dictionary's index
-                    Console.WriteLine("Please select the leap you would like to complete");
-                    int chosenLeapIndex = int.Parse(Console.ReadLine());
-                    var chosenLeap = eventDictionary[chosenLeapIndex - 1];
 
-                    // Returns the number of days between today and the chosen leap
-                    var attemptedLeap = eventRepository.DaysBetweenEvents(eventRepository.StartingDate(), chosenLeap.Date);
+                    if (answer == "Y")
+                    {
+                        // Loops through the dictionary and prints each event, also adds 1 to each Key so 
+                        // that they don't start with 0
+                        foreach (var singleEvent in eventDictionary)
+                        {
+                            Console.WriteLine($"{singleEvent.Key + 1} Location: {singleEvent.Value.Location}");
+                            Console.WriteLine($"Date: {singleEvent.Value.Date}");
+                            Console.WriteLine($"Host: {singleEvent.Value.Host}");
+                            Console.WriteLine($"Made Right? {singleEvent.Value.IsPutRight}");
+                            Console.WriteLine();
+                        }
+                        // Expects the user to enter the number associated with the event  
+                        // and subtracts 1 to match dictionary's index
+                        Console.WriteLine("Please select the leap you would like to complete");
+                        int chosenLeapIndex = int.Parse(Console.ReadLine());
+                        var chosenLeap = eventDictionary[chosenLeapIndex - 1];
 
-                    // Uses TimeSpan, that's where .Days comes from 
-                    Console.WriteLine($"Days to leap {Math.Abs(attemptedLeap.Days)}");
+                        // Returns the number of days between today and the chosen leap
+                        var attemptedLeap = eventRepository.DaysBetweenEvents(eventRepository.StartingDate(), chosenLeap.Date);
 
-                    // Prints cost to leap between two dates
-                    Console.WriteLine($"Cost to leap ${budget.TotalLeapCost(attemptedLeap)}");
+                        // Uses TimeSpan, that's where .Days comes from 
+                        Console.WriteLine($"Days to leap {Math.Abs(attemptedLeap.Days)}");
 
-                // Checks budget
-                budget.checkBalance(budget.TotalLeapCost(attemptedLeap), chosenLeap);
+                        // Prints cost to leap between two dates
+                        Console.WriteLine($"Cost to leap ${budget.TotalLeapCost(attemptedLeap)}");
 
-                leaperRepository.TakeTheLeap(chosenLeap, myLeaper);
+                        // Checks budget
+                        budget.checkBalance(budget.TotalLeapCost(attemptedLeap), chosenLeap);
 
-                Console.WriteLine($"You've taken the leap and your host is {myLeaper.CurrentEventObj.Host}");
+                        leaperRepository.TakeTheLeap(chosenLeap, myLeaper);
+
+                        Console.WriteLine($"You've taken the leap and your host is {myLeaper.CurrentEventObj.Host}");
 
 
-                var futureDateToChange = eventRepository.UpdateEvent(chosenLeap.Date);
+                        var futureDateToChange = eventRepository.UpdateEvent(chosenLeap.Date);
 
-                Console.WriteLine($"{futureDateToChange.Location} has been made right! {futureDateToChange.IsPutRight}");
+                        Console.WriteLine($"{futureDateToChange.Location} has been made right! {futureDateToChange.IsPutRight}");
 
-                leaperRepository.GetLeapHistory(myLeaper);
+                        break;
 
-                 break;
-
+                    }
+                    Console.WriteLine("Please reply with y or n");
+                    answer = Console.ReadLine().ToUpper();
                 }
-                Console.WriteLine("Please reply with y or n");
-                answer = Console.ReadLine().ToUpper();
             }
 
+            void ExecuteProgram()
+            {
+                LeapPrompt();
+                Console.WriteLine("1. Make another leap");
+                Console.WriteLine("2. See leap history");
+                Console.WriteLine("3. Add funds to my account");
+                int resp = int.Parse(Console.ReadLine());
+                if (resp == 1)
+                {
+                    LeapPrompt();
+                }
+                else if (resp == 2)
+                {
+                    leaperRepository.GetLeapHistory(myLeaper);
+                }
+                else if (resp == 3)
+                {
+                    Console.WriteLine("Budget stuff here");
+                }
+            }
 
-            Console.WriteLine("Matt Gill's code");
-            // Matt Gill's code begins here
-
-
-            //Console.WriteLine(distanceTest);
-           // var distanceTest = eventRepository.DistanceBetweenDates(event3.Date, event2.Date);
+            ExecuteProgram();
 
         }
     }
