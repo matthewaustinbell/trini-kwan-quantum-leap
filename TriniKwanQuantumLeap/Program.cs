@@ -64,6 +64,15 @@ namespace TriniKwanQuantumLeap
                 IsPutRight = false,
             };
             eventRepository.AddEvent(event6);
+
+            // Creates a Dictionary and adds each event to it
+            Dictionary<int, Event> eventDictionary = new Dictionary<int, Event>();
+            var allEvents = eventRepository.GetAllEvents();
+            for (var i = 0; i < allEvents.Count; i++)
+            {
+                eventDictionary.Add(i, eventRepository.GetAllEvents()[i]);
+            }
+
             Console.WriteLine("Mark's code");
             // mark's code begin here
             Console.WriteLine("HELLO THERE! WOULD YOU LIKE TO TAKE A LEAP? REPLY WITH Y OR N");
@@ -79,13 +88,14 @@ namespace TriniKwanQuantumLeap
                 if (answer == "Y")
                 {
                     var budget = new Budget();
-                    var allEvents = eventRepository.GetAllEvents();
-                    foreach (var singleEvent in allEvents)
+                    // Loops through the dictionary and prints each event, also adds 1 to each Key so 
+                    // that they don't start with 0
+                    foreach (var singleEvent in eventDictionary)
                     {
-                        Console.WriteLine($"Location: {singleEvent.Location}");
-                        Console.WriteLine($"Date: {singleEvent.Date}");
-                        Console.WriteLine($"Host: {singleEvent.Host}");
-                        Console.WriteLine($"Made Right? {singleEvent.IsPutRight}");
+                        Console.WriteLine($"{singleEvent.Key + 1} Location: {singleEvent.Value.Location}");
+                        Console.WriteLine($"Date: {singleEvent.Value.Date}");
+                        Console.WriteLine($"Host: {singleEvent.Value.Host}");
+                        Console.WriteLine($"Made Right? {singleEvent.Value.IsPutRight}");
                         Console.WriteLine();
                     }
                     budget.checkBalance();
