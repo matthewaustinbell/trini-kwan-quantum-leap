@@ -38,10 +38,12 @@ namespace TriniKwanQuantumLeap
                             Console.WriteLine("You're bad at math but we fixed it for you");
                             LeapFunds = LeapFunds + 1000;
                             Console.WriteLine($"You added a total of ${LeapFunds}");
+                            // Need to route user back to start
                             break;
                         }
                         _initialBalance += LeapFunds;
-                        Console.WriteLine($"${LeapFunds} has been added to your account. Your balance is {_initialBalance}. Leap Authorized!!!");
+                        _initialBalance -= costToLeap;
+                        Console.WriteLine($"${LeapFunds} has been added to your account. Your balance is ${_initialBalance}. Leap Authorized!!!");
                         Console.WriteLine($"You have arrived in {destination.Location}, the year is {destination.Date.Year}");
                         break;
                         // call method that authorize leap
