@@ -43,8 +43,8 @@ namespace TriniKwanQuantumLeap
                         }
                         _initialBalance += LeapFunds;
                         _initialBalance -= costToLeap;
-                        Console.WriteLine($"${LeapFunds} has been added to your account. Your balance is ${_initialBalance}. Leap Authorized!!!");
-                        Console.WriteLine($"You have arrived in {destination.Location}, the year is {destination.Date.Year}");
+                        Console.WriteLine($"${LeapFunds} has been added to your account. Your balance is ${_initialBalance}. Leap Authorized!");
+                        Console.WriteLine($"You have arrived at the {destination.Location}, the year is {destination.Date.Year}.");
                         break;
                         // call method that authorize leap
                         // deduct cos of leap
