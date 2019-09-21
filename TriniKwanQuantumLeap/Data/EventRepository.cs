@@ -14,6 +14,13 @@ namespace TriniKwanQuantumLeap.Data
             return _events;
         }
 
+        public Event GetSingleEvent(Guid eventId)
+        {
+            var singleEvent = _events.First(x => x.Id == eventId);
+
+            return singleEvent;
+        }
+
         public void AddEvent(Event eventToAdd)
         {
             eventToAdd.Id = Guid.NewGuid();
@@ -31,6 +38,13 @@ namespace TriniKwanQuantumLeap.Data
 
         }
 
+        public TimeSpan DistanceBetweenDates(DateTime date1, DateTime date2)
+        {
+            TimeSpan daysInBetween = date2 - date1;
+
+            return daysInBetween;
+        }
+
     }
 
     internal class Event
@@ -39,7 +53,7 @@ namespace TriniKwanQuantumLeap.Data
         public bool IsPutRight { get; set; }
 
         public string Location { get; set; }
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
         public string Host { get; set; }
 
     }
