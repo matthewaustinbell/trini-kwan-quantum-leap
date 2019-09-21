@@ -98,29 +98,30 @@ namespace TriniKwanQuantumLeap
                         Console.WriteLine($"Made Right? {singleEvent.Value.IsPutRight}");
                         Console.WriteLine();
                     }
+                    // Expects the user to enter the number associated with the event  
+                    // and subtracts 1 to match dictionary's index
+                    Console.WriteLine("Please select the leap you would like to complete");
+                    int chosenLeapIndex = int.Parse(Console.ReadLine());
+                    var chosenLeap = eventDictionary[chosenLeapIndex - 1];
+
+                    // Returns the number of days between today and the chosen leap
+                    var attemptedLeap = eventRepository.DaysBetweenEvents(eventRepository.StartingDate(), chosenLeap.Date);
+
+                    // Uses TimeSpan, that's where .Days comes from 
+                    Console.WriteLine($"Days to leap {Math.Abs(attemptedLeap.Days)}");
+
+                    // Prints cost to leap between two dates
+                    Console.WriteLine($"Cost to leap ${budget.TotalLeapCost(attemptedLeap)}");
+
+                    // Checks budget
+                    budget.checkBalance(budget.TotalLeapCost(attemptedLeap), chosenLeap);
+                    break;
+                    // Need to reconcile TotalCostToLeap with budget.checkBalance
+                    // Outcome will determine if the user can make the leap or not
 
                 }
-                // Expects the user to enter the number associated with the event  
-                // and subtracts 1 to match dictionary's index
-                Console.WriteLine("Please select the leap you would like to complete");
-                int chosenLeapIndex = int.Parse(Console.ReadLine());
-                var chosenLeap = eventDictionary[chosenLeapIndex - 1];
-
-                // Returns the number of days between today and the chosen leap
-                var attemptedLeap = eventRepository.DaysBetweenEvents(eventRepository.StartingDate(), chosenLeap.Date);
-
-                // Uses TimeSpan, that's where .Days comes from 
-                Console.WriteLine($"Days to leap {Math.Abs(attemptedLeap.Days)}");
-
-                // Prints cost to leap between two dates
-                Console.WriteLine($"Cost to leap ${budget.TotalLeapCost(attemptedLeap)}");
-
-                // Checks budget
-                budget.checkBalance(budget.TotalLeapCost(attemptedLeap), chosenLeap);
-                break;
-
-                // Need to reconcile TotalCostToLeap with budget.checkBalance
-                // Outcome will determine if the user can make the leap or not
+                Console.WriteLine("Please reply with y or n");
+                answer = Console.ReadLine().ToUpper();
             }
 
 
