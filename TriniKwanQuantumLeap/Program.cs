@@ -109,15 +109,20 @@ namespace TriniKwanQuantumLeap
                 // Returns the number of days between today and the chosen leap
                 var attemptedLeap = eventRepository.DaysBetweenEvents(eventRepository.StartingDate(), chosenLeap.Date);
 
+                // Uses TimeSpan, that's where .Days comes from 
                 Console.WriteLine($"Days to leap {Math.Abs(attemptedLeap.Days)}");
 
-                // Checks budget
+                // Checks budget, commented out temporarily
                 //   budget.checkBalance();
+
+                // Prints cost to leap between two dates
                 Console.WriteLine($"Cost to leap ${budget.TotalLeapCost(attemptedLeap)}");
                 break;
             }
-            Console.WriteLine("Emily's code");
+
+
             //Emily's code begins here
+            Console.WriteLine("Emily's code");
             Console.WriteLine("Hello Leaper! What's your name?");
             var nameInput = Console.ReadLine();
 
@@ -136,7 +141,7 @@ namespace TriniKwanQuantumLeap
 
             Console.WriteLine("Welcome, {Leaper.Name}. To which event would you like to travel? " +
                 "              Type the Event Id of the Event to which you'd like to travel and press enter.");
-            
+
             // Loop over all events in our event list and print the following for each:
             // Event Id: {Event.Id}
             // Date: {Event.Date}
@@ -146,11 +151,13 @@ namespace TriniKwanQuantumLeap
             // var eventObjectToLeapTo = *find the event Object using the Id they entered above*
             // var activeLeaper = *our current leaper*
 
+            // ----> Commented out so code will compile <----
             //LeaperRepository.AttemptLeap(/*eventObjectToLeapTo, activeLeaper*/);
+            // ----> Commented out so code will compile <----
 
             // The AttemptLeapMethod above will return 'true' if leap can be made or 'false' if more funds are needed
-                // If true:
-                Console.WriteLine("Congratulations! You made it to {Event.Description} in {Event.Location} on {Event.Date}. " +
+            // If true:
+            Console.WriteLine("Congratulations! You made it to {Event.Description} in {Event.Location} on {Event.Date}. " +
                     "Operating as {Event.Host}, you were able to fix this situation and change the course of history.");
 
                 Console.WriteLine("Would you like to leap again? (y/n)");
