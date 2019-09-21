@@ -44,8 +44,9 @@ namespace TriniKwanQuantumLeap
                         _initialBalance += LeapFunds;
                         _initialBalance -= costToLeap;
 
-                        Console.WriteLine($"${LeapFunds} has been added to your account. Your balance is ${_initialBalance}. Leap Authorized!!!");
-                        Console.WriteLine($"You have arrived in {destination.Location}, the year is {destination.Date.Year}");
+                        Console.WriteLine($"${LeapFunds} has been added to your account. Your balance is ${_initialBalance}. Leap Authorized!");
+                        Console.WriteLine($"You have arrived at the {destination.Location}, the year is {destination.Date.Year}.");
+
                         break;
                         // call method that authorize leap
                         // deduct cos of leap
@@ -53,15 +54,15 @@ namespace TriniKwanQuantumLeap
                     if (reply == "N")
                     {
                         Console.WriteLine("GoodLuck on your ventures");
-                        break;
+                        Environment.Exit(0);
                     }
                     Console.WriteLine("Please reply with y or n");
                     reply = Console.ReadLine().ToUpper();
                 }
 
             }
-
-            }
+        }
+      
         public double TotalLeapCost(TimeSpan daysToLeap)
         {
             var cost = daysToLeap.Days;

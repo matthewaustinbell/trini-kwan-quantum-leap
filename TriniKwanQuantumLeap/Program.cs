@@ -8,6 +8,10 @@ namespace TriniKwanQuantumLeap
 {
     class Program
     {
+        public void intro()
+        {
+
+        }
         static void Main(string[] args)
         {
             // Initialize Event Repository and create events
@@ -23,90 +27,90 @@ namespace TriniKwanQuantumLeap
 
             var event1 = new Event
             {
-                Location = "Nashville",
-                Date = new DateTime(2019, 09, 19),
-                Host = "Your Mom",
+                Location = "Moon Landing",
+                Date = new DateTime(2069, 07, 20),
+                Host = "Buzz Aldrin",
                 IsPutRight = false,
             };
             eventRepository.AddEvent(event1);
 
             var event2 = new Event
             {
-                Location = "Memphis",
-                Date = new DateTime(1990, 09, 19),
-                Host = "Larry King",
+                Location = "Assassination of Franz Ferdinand",
+                Date = new DateTime(1914, 06, 28),
+                Host = "Gavrilo Princip",
                 IsPutRight = false,
             };
             eventRepository.AddEvent(event2);
 
             var event3 = new Event
             {
-                Location = "Knoxville",
-                Date = new DateTime(1800, 09, 15),
-                Host = "Oprah Winfrey",
+                Location = "Attack on Pearl Harbor",
+                Date = new DateTime(1941, 12, 7),
+                Host = "Franklin D. Roosevelt",
                 IsPutRight = false,
             };
             eventRepository.AddEvent(event3);
 
             var event4 = new Event
             {
-                Location = "Seattle",
+                Location = "Assassination of J.F.K.",
                 Date = new DateTime(1967, 08, 20),
-                Host = "Ed Dickson",
+                Host = "Jackie Onassis Kennedy",
                 IsPutRight = false,
             };
             eventRepository.AddEvent(event4);
 
             var event5 = new Event
             {
-                Location = "Boston",
-                Date = new DateTime(2003, 09, 17),
-                Host = "Mookie Betts",
+                Location = "Signing of the Treaty of Versailles",
+                Date = new DateTime(1919, 06, 28),
+                Host = "Woodrow Wilson",
                 IsPutRight = false,
             };
             eventRepository.AddEvent(event5);
 
             var event6 = new Event
             {
-                Location = "Los Angeles",
-                Date = new DateTime(2080, 02, 08),
-                Host = "Magic Johnson",
+                Location = "Bombing of Hiroshima",
+                Date = new DateTime(1945, 08, 06),
+                Host = "Major General Curtis Lemay",
                 IsPutRight = false,
             };
             eventRepository.AddEvent(event6);
 
             var event7 = new Event
             {
-                Location = "Toledo",
-                Date = new DateTime(1974, 02, 09),
-                Host = "",
+                Location = "Boston Tea Party",
+                Date = new DateTime(1773, 12, 16),
+                Host = "Samuel Adams",
                 IsPutRight = false,
             };
             eventRepository.AddEvent(event7);
 
             var event8 = new Event
             {
-                Location = "Raleigh",
+                Location = "Day Frito-Lay stops making Doritos 3D",
                 Date = new DateTime(2092, 02, 16),
-                Host = "Clay Aiken",
+                Host = "Someone who really freakin' loves Doritos 3D",
                 IsPutRight = false,
             };
             eventRepository.AddEvent(event8);
 
             var event9 = new Event
             {
-                Location = "St. Petersburg",
-                Date = new DateTime(2054, 02, 04),
-                Host = "Ji-man Choi",
+                Location = "Fall of the Berlin Wall",
+                Date = new DateTime(1989, 11, 09),
+                Host = "Mikhail Gorbachev",
                 IsPutRight = false,
             };
             eventRepository.AddEvent(event9);
 
             var event10 = new Event
             {
-                Location = "Indianapolis",
-                Date = new DateTime(2024, 02, 02),
-                Host = "Jacob Brissett",
+                Location = "Chernobyl Disaster",
+                Date = new DateTime(1986, 04, 26),
+                Host = "Anatoly Dyatlov",
                 IsPutRight = false,
             };
             eventRepository.AddEvent(event10);
@@ -121,17 +125,23 @@ namespace TriniKwanQuantumLeap
                 eventDictionary.Add(i, eventRepository.GetAllEvents()[i]);
             }
 
+
             // Checks if the leaper has leaped yet 
             // If they have and leap again the "would you like to leap" prompt is skipped
             int leapCount = 0;
 
             void LeapPrompt()
             {
-
                while (true)
                 {
                     var budget = new Budget();
 
+                    Console.WriteLine((leapCount == 0 ? " After theorizing that time travel could happen within your own lifetime,\n" +
+                  " you stepped into the Quantum Leap accelerator, and vanished.\n " +
+                  "When you awoke you found yourself trapped in the past,\n" +
+                  " facing a mirror image that was not your own.\n" +
+                  " Now driven by an unknown force to change history for the better\n" +
+                  " you are guided by AI (a Hologram that only you can see and hear).\n AI asks in a robotic voice... \n " : null));
                     Console.WriteLine((leapCount == 0 ? "HELLO THERE! WOULD YOU LIKE TO TAKE A LEAP? REPLY WITH Y OR N" : null));
                     string answer = (leapCount == 0 ? Console.ReadLine().ToUpper() : "Y");
                     
@@ -177,9 +187,12 @@ namespace TriniKwanQuantumLeap
                         Console.WriteLine($"You've taken the leap and your host is {myLeaper.CurrentEventObj.Host}.");
 
 
-                        var futureDateToChange = eventRepository.UpdateEvent(chosenLeap.Date);
+                Console.WriteLine("You arrived just in time to make this situation right.");  
 
-                        Console.WriteLine($"{futureDateToChange.Location} has been made right! {futureDateToChange.IsPutRight}");
+                var futureDateToChange = eventRepository.UpdateEvent(chosenLeap.Date);
+
+                Console.WriteLine($"However, your actions have also changed the {futureDateToChange.Location}. Take heed. Every action you take throughout time can change the course of history.");
+
 
                         break;
 
