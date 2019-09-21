@@ -60,7 +60,7 @@ namespace TriniKwanQuantumLeap
             // var eventObjectToLeapTo = *find the event Object using the Id they entered above*
             // var activeLeaper = *our current leaper*
 
-            LeaperRepository.AttemptLeap(/*eventObjectToLeapTo, activeLeaper*/);
+            //LeaperRepository.AttemptLeap(/*eventObjectToLeapTo, activeLeaper*/);
 
             // The AttemptLeapMethod above will return 'true' if leap can be made or 'false' if more funds are needed
                 // If true:
