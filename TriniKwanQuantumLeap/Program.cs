@@ -108,7 +108,7 @@ namespace TriniKwanQuantumLeap
                 Console.WriteLine(chosenLeap.Location);
                 var attemptedLeap = eventRepository.DaysBetweenEvents(eventRepository.StartingDate(), chosenLeap.Date);
 
-                Console.WriteLine(attemptedLeap);
+                Console.WriteLine($"Days to leap {Math.Abs(attemptedLeap.Days)}");
 
                 // Checks budget
              //   budget.checkBalance();
