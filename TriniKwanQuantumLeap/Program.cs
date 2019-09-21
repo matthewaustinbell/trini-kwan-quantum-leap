@@ -173,7 +173,9 @@ namespace TriniKwanQuantumLeap
 
                 Console.WriteLine($"{futureDateToChange.Location} has been made right! {futureDateToChange.IsPutRight}");
 
-                    break;
+                leaperRepository.GetLeapHistory(myLeaper);
+
+                 break;
 
                 }
                 Console.WriteLine("Please reply with y or n");

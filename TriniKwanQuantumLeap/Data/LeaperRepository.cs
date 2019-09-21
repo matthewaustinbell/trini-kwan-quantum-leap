@@ -19,6 +19,27 @@ namespace TriniKwanQuantumLeap.Data
             currentLeaper.LeapHistory.Add(eventToJumpTo);
             eventToJumpTo.IsPutRight = true;
         }
+
+        public void GetLeapHistory(Leaper leaper)
+        {
+            var leapHistory = leaper.LeapHistory;
+            int lastEventIndex = leapHistory.Count - 1;
+            for (var i = 0; i < leapHistory.Count; i++)
+            {
+                if (leapHistory[i] == leapHistory[0])
+                {
+                    Console.WriteLine("First Event Visited");
+                }
+                Console.WriteLine(leapHistory[i].Location);
+                Console.WriteLine(leapHistory[i].Date);
+                Console.WriteLine(leapHistory[i].Host);
+
+                if (i == lastEventIndex)
+                {
+                    Console.WriteLine("Most Recent Visit");
+                }
+            }
+        }
     }
 
     internal class Leaper
