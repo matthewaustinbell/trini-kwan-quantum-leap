@@ -114,7 +114,7 @@ namespace TriniKwanQuantumLeap
 
             var event4 = new Event
             {
-                Location = "Future",
+                Location = "Future 1",
                 Date = new DateTime(2000, 09, 15),
                 Host = "Oprah Winfrey",
                 IsPutRight = false,
@@ -122,7 +122,7 @@ namespace TriniKwanQuantumLeap
             eventRepository.AddEvent(event4);
             var event5 = new Event
             {
-                Location = "Future",
+                Location = "Future 2",
                 Date = new DateTime(2010, 09, 15),
                 Host = "Oprah Winfrey",
                 IsPutRight = false,
@@ -130,7 +130,7 @@ namespace TriniKwanQuantumLeap
             eventRepository.AddEvent(event5);
             var event6 = new Event
             {
-                Location = "Future",
+                Location = "Future 3",
                 Date = new DateTime(2020, 09, 15),
                 Host = "Oprah Winfrey",
                 IsPutRight = false,
@@ -151,6 +151,8 @@ namespace TriniKwanQuantumLeap
             //}
 
             var currentDateTest = eventRepository.DistanceBetweenDates(event2.Date);
+
+            Console.WriteLine($"{currentDateTest.Location} has been made right! {currentDateTest.IsPutRight}");
 
            // var distanceTest = eventRepository.DistanceBetweenDates(event3.Date, event2.Date);
 

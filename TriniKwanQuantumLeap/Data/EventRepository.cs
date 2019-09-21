@@ -38,7 +38,7 @@ namespace TriniKwanQuantumLeap.Data
 
         }
 
-        public List<Event> DistanceBetweenDates(DateTime currentDate)
+        public Event DistanceBetweenDates(DateTime currentDate)
         {
             TimeSpan zero = new TimeSpan(0, 0, 0);
 
@@ -53,12 +53,15 @@ namespace TriniKwanQuantumLeap.Data
                 }
             }
 
-            foreach (var day in futureDays)
-            {
-                Console.WriteLine(day.Location);
-            }
+            var randomDay = new Random();
 
-            return futureDays;
+            var randomDayIndex = randomDay.Next(futureDays.Count);
+
+            futureDays[randomDayIndex].IsPutRight = true;
+
+            var adjustedDay = futureDays[randomDayIndex];
+
+            return adjustedDay;
         }
 
     }
