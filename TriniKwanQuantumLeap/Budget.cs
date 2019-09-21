@@ -6,7 +6,7 @@ namespace TriniKwanQuantumLeap
 {
     class Budget
     {
-        readonly int _leapingCost = 1000;
+        public int LeapingCost { get; set; }
         public int _initialBalance = 500;
         public int FinalBalance { get; set; }
         public int LeapFunds { get; set; }
@@ -56,8 +56,12 @@ namespace TriniKwanQuantumLeap
             }
 
             }
-        public void TotalLeapCost()
+        public int TotalLeapCost(TimeSpan daysToLeap)
         {
+            var cost = daysToLeap.Days;
+            LeapingCost = Math.Abs(cost) * 1000;
+
+            return LeapingCost;
 
         }
 

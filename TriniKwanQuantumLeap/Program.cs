@@ -111,8 +111,9 @@ namespace TriniKwanQuantumLeap
 
                 Console.WriteLine($"Days to leap {Math.Abs(attemptedLeap.Days)}");
 
-             // Checks budget
-             //   budget.checkBalance();
+                // Checks budget
+                //   budget.checkBalance();
+                Console.WriteLine($"Cost to leap ${budget.TotalLeapCost(attemptedLeap)}");
                 break;
             }
             Console.WriteLine("Emily's code");
