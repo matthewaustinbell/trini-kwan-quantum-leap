@@ -8,6 +8,10 @@ namespace TriniKwanQuantumLeap
 {
     class Program
     {
+        public void intro()
+        {
+
+        }
         static void Main(string[] args)
         {
             // Initialize Event Repository and create events
@@ -168,15 +172,15 @@ namespace TriniKwanQuantumLeap
                     Console.WriteLine($"Cost to leap: ${budget.TotalLeapCost(attemptedLeap)}");
 
                 // Checks budget
-                budget.checkBalance(budget.TotalLeapCost(attemptedLeap), chosenLeap);
+                    budget.checkBalance(budget.TotalLeapCost(attemptedLeap), chosenLeap);
 
-                leaperRepository.TakeTheLeap(chosenLeap, myLeaper);
+                    leaperRepository.TakeTheLeap(chosenLeap, myLeaper);
 
                 Console.WriteLine($"You are now inhabiting the body of {myLeaper.CurrentEventObj.Host}.");
 
                 Console.WriteLine("You arrived just in time to make this situation right.");  
 
-                var futureDateToChange = eventRepository.UpdateEvent(chosenLeap.Date);
+                    var futureDateToChange = eventRepository.UpdateEvent(chosenLeap.Date);
 
                 Console.WriteLine($"However, your actions have also changed the {futureDateToChange.Location}. Take heed. Every action you take throughout time can change the course of history.");
 
@@ -185,6 +189,7 @@ namespace TriniKwanQuantumLeap
                 }
                 Console.WriteLine("Please reply with y or n");
                 answer = Console.ReadLine().ToUpper();
+                
             }
 
         }
