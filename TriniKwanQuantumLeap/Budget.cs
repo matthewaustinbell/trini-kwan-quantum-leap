@@ -8,7 +8,7 @@ namespace TriniKwanQuantumLeap
     class Budget
     {
         public double LeapingCost { get; set; }
-        public double _initialBalance = 5000000;
+        public double _initialBalance = 50000000;
         public double FinalBalance { get; set; } 
         public double LeapFunds { get; set; }
 
