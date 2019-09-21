@@ -106,14 +106,10 @@ namespace TriniKwanQuantumLeap
                 Console.WriteLine($"Made Right? {singleEvent.IsPutRight}");
                 Console.WriteLine();
             }
-<<<<<<< HEAD
 
             var distanceTest = eventRepository.DistanceBetweenDates(event3.Date, event2.Date);
 
             Console.WriteLine(distanceTest);
-
-=======
->>>>>>> master
         }
     }
 }
