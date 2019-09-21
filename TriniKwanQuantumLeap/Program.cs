@@ -180,7 +180,6 @@ namespace TriniKwanQuantumLeap
             Console.WriteLine("Matt Gill's code");
             // Matt Gill's code begins here
 
-<<<<<<< HEAD
             foreach (var singleEvent in allEvents)
             {
                 Console.WriteLine($"Location: {singleEvent.Location}");
@@ -189,18 +188,13 @@ namespace TriniKwanQuantumLeap
                 Console.WriteLine($"Made Right? {singleEvent.IsPutRight}");
                 Console.WriteLine();
             }
-=======
             var currentDateTest = eventRepository.UpdateEvent(event2.Date);
->>>>>>> 6a936200c647d4f589b73536bbbdba948d38cf16
 
             Console.WriteLine($"{currentDateTest.Location} has been made right! {currentDateTest.IsPutRight}");
 
-<<<<<<< HEAD
-            Console.WriteLine(distanceTest);
-=======
+            //Console.WriteLine(distanceTest);
            // var distanceTest = eventRepository.DistanceBetweenDates(event3.Date, event2.Date);
 
->>>>>>> 6a936200c647d4f589b73536bbbdba948d38cf16
         }
     }
 }
