@@ -16,6 +16,14 @@ namespace TriniKwanQuantumLeap
         {
             // Initialize Event Repository and create events
             var eventRepository = new EventRepository();
+            var leaperRepository = new LeaperRepository();
+
+            var myLeaper = new Leaper()
+            {
+                Name = "Bob",
+            };
+
+            leaperRepository.AddLeaper(myLeaper);
 
             var event1 = new Event
             {
@@ -116,12 +124,19 @@ namespace TriniKwanQuantumLeap
 
                     // Prints cost to leap between two dates
                     Console.WriteLine($"Cost to leap ${budget.TotalLeapCost(attemptedLeap)}");
-
                     // Checks budget
                     budget.checkBalance(budget.TotalLeapCost(attemptedLeap), chosenLeap);
                     //break;
                     // Need to reconcile TotalCostToLeap with budget.checkBalance
                     // Outcome will determine if the user can make the leap or not
+                // Checks budget
+                budget.checkBalance(budget.TotalLeapCost(attemptedLeap), chosenLeap);
+
+                leaperRepository.TakeTheLeap(chosenLeap, myLeaper);
+
+                Console.WriteLine($"You've taken the leap and your host is {myLeaper.CurrentEventObj.Host}");
+
+                break;
 
                     //Emily's code begins here
                     Console.WriteLine("Emily's code");
@@ -136,7 +151,6 @@ namespace TriniKwanQuantumLeap
                     var currentLocation = locationInput;
                     var IsPutRight = true;
                     var randomGuid = Guid.NewGuid();
-
                     // Make the five variables above into an object and assign it as the Leaper's CurrentEventObj
 
                     // add the Leaper to the LeaperRepo
@@ -190,10 +204,6 @@ namespace TriniKwanQuantumLeap
                     var currentDateTest = eventRepository.UpdateEvent(event2.Date);
 
                     Console.WriteLine($"{currentDateTest.Location} has been made right! {currentDateTest.IsPutRight}");
-
-                    //Console.WriteLine(distanceTest);
-                    // var distanceTest = eventRepository.DistanceBetweenDates(event3.Date, event2.Date);
-
 
                 }
                 Console.WriteLine("Please reply with y or n");
