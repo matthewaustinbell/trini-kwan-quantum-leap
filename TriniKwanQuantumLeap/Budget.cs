@@ -7,12 +7,12 @@ namespace TriniKwanQuantumLeap
 {
     class Budget
     {
-        public int LeapingCost { get; set; }
-        public int _initialBalance = 5000000;
-        public int FinalBalance { get; set; }
-        public int LeapFunds { get; set; }
+        public double LeapingCost { get; set; }
+        public double _initialBalance = 5000000;
+        public double FinalBalance { get; set; }
+        public double LeapFunds { get; set; }
 
-        public void checkBalance(int costToLeap, Event destination)
+        public void checkBalance(double costToLeap, Event destination)
         {
 
             if (_initialBalance >= costToLeap)
@@ -31,7 +31,7 @@ namespace TriniKwanQuantumLeap
                     if (reply == "Y")
                     {
                         Console.WriteLine("Enter an amount greater than $1000");
-                        LeapFunds = int.Parse(Console.ReadLine());
+                        LeapFunds = double.Parse(Console.ReadLine());
                         // Adding data validation for if the user enters less than $1000
                         if (LeapFunds < 1000)
                         {
@@ -61,7 +61,7 @@ namespace TriniKwanQuantumLeap
             }
 
             }
-        public int TotalLeapCost(TimeSpan daysToLeap)
+        public double TotalLeapCost(TimeSpan daysToLeap)
         {
             var cost = daysToLeap.Days;
             LeapingCost = Math.Abs(cost) * 1000;

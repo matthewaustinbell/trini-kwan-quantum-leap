@@ -168,7 +168,12 @@ namespace TriniKwanQuantumLeap
 
                 Console.WriteLine($"You've taken the leap and your host is {myLeaper.CurrentEventObj.Host}");
 
-                break;
+
+                var futureDateToChange = eventRepository.UpdateEvent(chosenLeap.Date);
+
+                Console.WriteLine($"{futureDateToChange.Location} has been made right! {futureDateToChange.IsPutRight}");
+
+                    break;
 
                 }
                 Console.WriteLine("Please reply with y or n");
@@ -179,17 +184,6 @@ namespace TriniKwanQuantumLeap
             Console.WriteLine("Matt Gill's code");
             // Matt Gill's code begins here
 
-            foreach (var singleEvent in allEvents)
-            {
-                Console.WriteLine($"Location: {singleEvent.Location}");
-                Console.WriteLine($"Date: {singleEvent.Date}");
-                Console.WriteLine($"Host: {singleEvent.Host}");
-                Console.WriteLine($"Made Right? {singleEvent.IsPutRight}");
-                Console.WriteLine();
-            }
-            var currentDateTest = eventRepository.UpdateEvent(event2.Date);
-
-            Console.WriteLine($"{currentDateTest.Location} has been made right! {currentDateTest.IsPutRight}");
 
             //Console.WriteLine(distanceTest);
            // var distanceTest = eventRepository.DistanceBetweenDates(event3.Date, event2.Date);
