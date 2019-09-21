@@ -30,7 +30,7 @@ namespace TriniKwanQuantumLeap
                 Console.WriteLine("PLEASE REPLY WITH A Y OR N");
                 answer = Console.ReadLine().ToUpper();
             }
-
+            Console.WriteLine("Emily's code");
             //Emily's code begins here
             Console.WriteLine("Hello Leaper! What's your name?");
             var nameInput = Console.ReadLine();
@@ -112,26 +112,48 @@ namespace TriniKwanQuantumLeap
             };
             eventRepository.AddEvent(event3);
 
+            var event4 = new Event
+            {
+                Location = "Future",
+                Date = new DateTime(2000, 09, 15),
+                Host = "Oprah Winfrey",
+                IsPutRight = false,
+            };
+            eventRepository.AddEvent(event4);
+            var event5 = new Event
+            {
+                Location = "Future",
+                Date = new DateTime(2010, 09, 15),
+                Host = "Oprah Winfrey",
+                IsPutRight = false,
+            };
+            eventRepository.AddEvent(event5);
+            var event6 = new Event
+            {
+                Location = "Future",
+                Date = new DateTime(2020, 09, 15),
+                Host = "Oprah Winfrey",
+                IsPutRight = false,
+            };
+            eventRepository.AddEvent(event6);
+
             var allEvents = eventRepository.GetAllEvents();
 
             eventRepository.UpdateEvent(event1.Id);
 
-            foreach (var singleEvent in allEvents)
-            {
-                Console.WriteLine($"Location: {singleEvent.Location}");
-                Console.WriteLine($"Date: {singleEvent.Date}");
-                Console.WriteLine($"Host: {singleEvent.Host}");
-                Console.WriteLine($"Made Right? {singleEvent.IsPutRight}");
-                Console.WriteLine();
-            }
-<<<<<<< HEAD
+            //foreach (var singleEvent in allEvents)
+            //{
+            //    Console.WriteLine($"Location: {singleEvent.Location}");
+            //    Console.WriteLine($"Date: {singleEvent.Date}");
+            //    Console.WriteLine($"Host: {singleEvent.Host}");
+            //    Console.WriteLine($"Made Right? {singleEvent.IsPutRight}");
+            //    Console.WriteLine();
+            //}
 
-            var distanceTest = eventRepository.DistanceBetweenDates(event3.Date, event2.Date);
+            var currentDateTest = eventRepository.DistanceBetweenDates(event2.Date);
 
-            Console.WriteLine(distanceTest);
+           // var distanceTest = eventRepository.DistanceBetweenDates(event3.Date, event2.Date);
 
-=======
->>>>>>> master
         }
     }
 }

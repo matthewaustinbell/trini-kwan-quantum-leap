@@ -28,21 +28,37 @@ namespace TriniKwanQuantumLeap.Data
             _events.Add(eventToAdd);
         }
 
-        public string UpdateEvent(Guid eventId)
+        public DateTime UpdateEvent(Guid currentEvent)
         {
-            var eventToUpdate = _events.First(x => x.Id == eventId);
+            var dateOfCurrentEvent = _events.First(x => x.Id == currentEvent);
 
-            eventToUpdate.IsPutRight = true;
+          //  eventToUpdate.IsPutRight = true;
 
-            return eventToUpdate.Location;
+            return dateOfCurrentEvent.Date;
 
         }
 
-        public TimeSpan DistanceBetweenDates(DateTime date1, DateTime date2)
+        public List<Event> DistanceBetweenDates(DateTime currentDate)
         {
-            TimeSpan daysInBetween = date2 - date1;
+            TimeSpan zero = new TimeSpan(0, 0, 0);
 
-            return daysInBetween;
+            List<Event> futureDays = new List<Event>();
+
+            foreach (var singleEvent in _events)
+            {
+                TimeSpan daysInBetween = currentDate - singleEvent.Date;
+                if (daysInBetween < zero)
+                {
+                    futureDays.Add(singleEvent);
+                }
+            }
+
+            foreach (var day in futureDays)
+            {
+                Console.WriteLine(day.Location);
+            }
+
+            return futureDays;
         }
 
     }
