@@ -60,7 +60,7 @@ namespace TriniKwanQuantumLeap
 
             }
 
-            }
+        }
         public int TotalLeapCost(TimeSpan daysToLeap)
         {
             var cost = daysToLeap.Days;
