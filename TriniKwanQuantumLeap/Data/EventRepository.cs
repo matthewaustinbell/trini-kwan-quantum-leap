@@ -21,6 +21,12 @@ namespace TriniKwanQuantumLeap.Data
             return singleEvent;
         }
 
+        public DateTime StartingDate()
+        {
+            var startingPoint = DateTime.Now;
+            return startingPoint;
+        }
+
         public void AddEvent(Event eventToAdd)
         {
             eventToAdd.Id = Guid.NewGuid();
@@ -28,17 +34,15 @@ namespace TriniKwanQuantumLeap.Data
             _events.Add(eventToAdd);
         }
 
-        public DateTime UpdateEvent(Guid currentEvent)
+        public TimeSpan DaysBetweenEvents(DateTime date1, DateTime date2)
         {
-            var dateOfCurrentEvent = _events.First(x => x.Id == currentEvent);
+            TimeSpan daysInBetween = date2 - date1;
 
-          //  eventToUpdate.IsPutRight = true;
-
-            return dateOfCurrentEvent.Date;
-
+            return daysInBetween;
         }
 
-        public Event DistanceBetweenDates(DateTime currentDate)
+
+        public Event UpdateEvent(DateTime currentDate)
         {
             TimeSpan zero = new TimeSpan(0, 0, 0);
 

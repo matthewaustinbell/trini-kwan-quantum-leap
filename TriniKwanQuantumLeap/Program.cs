@@ -79,6 +79,7 @@ namespace TriniKwanQuantumLeap
             string answer = Console.ReadLine().ToUpper();
             while (true)
             {
+                var budget = new Budget();
                 if (answer == "N")
                 {
                     Console.WriteLine("FINE! BE BORING!");
@@ -87,7 +88,6 @@ namespace TriniKwanQuantumLeap
                 
                 if (answer == "Y")
                 {
-                    var budget = new Budget();
                     // Loops through the dictionary and prints each event, also adds 1 to each Key so 
                     // that they don't start with 0
                     foreach (var singleEvent in eventDictionary)
@@ -98,11 +98,21 @@ namespace TriniKwanQuantumLeap
                         Console.WriteLine($"Made Right? {singleEvent.Value.IsPutRight}");
                         Console.WriteLine();
                     }
-                    budget.checkBalance();
-                    break;
+
                 }
-                Console.WriteLine("PLEASE REPLY WITH A Y OR N");
-                answer = Console.ReadLine().ToUpper();
+                // Expects the user to enter the number associated with the event  
+                // and subtracts 1 to match dictionary's index
+                Console.WriteLine("Please select the leap you would like to complete");
+                int chosenLeapIndex = int.Parse(Console.ReadLine());
+                var chosenLeap = eventDictionary[chosenLeapIndex - 1];
+                Console.WriteLine(chosenLeap.Location);
+                var attemptedLeap = eventRepository.DaysBetweenEvents(eventRepository.StartingDate(), chosenLeap.Date);
+
+                Console.WriteLine(attemptedLeap);
+
+                // Checks budget
+             //   budget.checkBalance();
+                break;
             }
             Console.WriteLine("Emily's code");
             //Emily's code begins here
@@ -158,7 +168,7 @@ namespace TriniKwanQuantumLeap
             Console.WriteLine("Matt Gill's code");
             // Matt Gill's code begins here
 
-            var currentDateTest = eventRepository.DistanceBetweenDates(event2.Date);
+            var currentDateTest = eventRepository.UpdateEvent(event2.Date);
 
             Console.WriteLine($"{currentDateTest.Location} has been made right! {currentDateTest.IsPutRight}");
 
