@@ -105,12 +105,13 @@ namespace TriniKwanQuantumLeap
                 Console.WriteLine("Please select the leap you would like to complete");
                 int chosenLeapIndex = int.Parse(Console.ReadLine());
                 var chosenLeap = eventDictionary[chosenLeapIndex - 1];
-                Console.WriteLine(chosenLeap.Location);
+
+                // Returns the number of days between today and the chosen leap
                 var attemptedLeap = eventRepository.DaysBetweenEvents(eventRepository.StartingDate(), chosenLeap.Date);
 
                 Console.WriteLine($"Days to leap {Math.Abs(attemptedLeap.Days)}");
 
-                // Checks budget
+             // Checks budget
              //   budget.checkBalance();
                 break;
             }
