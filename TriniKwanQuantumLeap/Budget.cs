@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TriniKwanQuantumLeap.Data;
 
 namespace TriniKwanQuantumLeap
 {
@@ -11,12 +12,13 @@ namespace TriniKwanQuantumLeap
         public int FinalBalance { get; set; }
         public int LeapFunds { get; set; }
 
-        public void checkBalance()
+        public void checkBalance(int costToLeap, Event destination)
         {
 
-            if (_initialBalance >= 1000)
+            if (_initialBalance >= costToLeap)
             {
                 Console.WriteLine("Leap Authorized");
+                Console.WriteLine($"You have arrived in {destination.Location}, the year is {destination.Date.Year}");
                 // call the Leap method from the Leap repository
                 // deduct cost of leap from initial balance
             }
@@ -40,6 +42,7 @@ namespace TriniKwanQuantumLeap
                         }
                         _initialBalance += LeapFunds;
                         Console.WriteLine($"${LeapFunds} has been added to your account. Your balance is {_initialBalance}. Leap Authorized!!!");
+                        Console.WriteLine($"You have arrived in {destination.Location}, the year is {destination.Date.Year}");
                         break;
                         // call method that authorize leap
                         // deduct cos of leap

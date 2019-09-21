@@ -112,12 +112,15 @@ namespace TriniKwanQuantumLeap
                 // Uses TimeSpan, that's where .Days comes from 
                 Console.WriteLine($"Days to leap {Math.Abs(attemptedLeap.Days)}");
 
-                // Checks budget, commented out temporarily
-                //   budget.checkBalance();
-
                 // Prints cost to leap between two dates
                 Console.WriteLine($"Cost to leap ${budget.TotalLeapCost(attemptedLeap)}");
+
+                // Checks budget
+                budget.checkBalance(budget.TotalLeapCost(attemptedLeap), chosenLeap);
                 break;
+
+                // Need to reconcile TotalCostToLeap with budget.checkBalance
+                // Outcome will determine if the user can make the leap or not
             }
 
 
