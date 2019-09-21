@@ -10,6 +10,61 @@ namespace TriniKwanQuantumLeap
     {
         static void Main(string[] args)
         {
+            // Initialize Event Repository and create events
+            var eventRepository = new EventRepository();
+
+            var event1 = new Event
+            {
+                Location = "Nashville",
+                Date = new DateTime(2019, 09, 19),
+                Host = "Your Mom",
+                IsPutRight = false,
+            };
+            eventRepository.AddEvent(event1);
+
+            var event2 = new Event
+            {
+                Location = "Memphis",
+                Date = new DateTime(1990, 09, 19),
+                Host = "Larry King",
+                IsPutRight = false,
+            };
+            eventRepository.AddEvent(event2);
+
+            var event3 = new Event
+            {
+                Location = "Knoxville",
+                Date = new DateTime(1800, 09, 15),
+                Host = "Oprah Winfrey",
+                IsPutRight = false,
+            };
+            eventRepository.AddEvent(event3);
+
+            var event4 = new Event
+            {
+                Location = "Future 1",
+                Date = new DateTime(2000, 09, 15),
+                Host = "Oprah Winfrey",
+                IsPutRight = false,
+            };
+            eventRepository.AddEvent(event4);
+            var event5 = new Event
+            {
+                Location = "Future 2",
+                Date = new DateTime(2010, 09, 15),
+                Host = "Oprah Winfrey",
+                IsPutRight = false,
+            };
+            eventRepository.AddEvent(event5);
+            var event6 = new Event
+            {
+                Location = "Future 3",
+                Date = new DateTime(2020, 09, 15),
+                Host = "Oprah Winfrey",
+                IsPutRight = false,
+            };
+            eventRepository.AddEvent(event6);
+            Console.WriteLine("Mark's code");
             // mark's code begin here
             Console.WriteLine("HELLO THERE! WOULD YOU LIKE TO TAKE A LEAP? REPLY WITH Y OR N");
             string answer = Console.ReadLine().ToUpper();
@@ -24,6 +79,15 @@ namespace TriniKwanQuantumLeap
                 if (answer == "Y")
                 {
                     var budget = new Budget();
+                    var allEvents = eventRepository.GetAllEvents();
+                    foreach (var singleEvent in allEvents)
+                    {
+                        Console.WriteLine($"Location: {singleEvent.Location}");
+                        Console.WriteLine($"Date: {singleEvent.Date}");
+                        Console.WriteLine($"Host: {singleEvent.Host}");
+                        Console.WriteLine($"Made Right? {singleEvent.IsPutRight}");
+                        Console.WriteLine();
+                    }
                     budget.checkBalance();
                     break;
                 }
@@ -78,77 +142,11 @@ namespace TriniKwanQuantumLeap
 
             // create a method in the budget class that takes the value and adds it to the budget.
 
-                       
-          
-          
-          
+
+
+
+            Console.WriteLine("Matt Gill's code");
             // Matt Gill's code begins here
-            var eventRepository = new EventRepository();
-
-            var event1 = new Event
-            {
-                Location = "Nashville",
-                Date = new DateTime(2019, 09, 19),
-                Host = "Your Mom",
-                IsPutRight = false,
-            };
-            eventRepository.AddEvent(event1);
-
-            var event2 = new Event
-            {
-                Location = "Memphis",
-                Date = new DateTime(1990, 09, 19),
-                Host = "Larry King",
-                IsPutRight = false,
-            };
-            eventRepository.AddEvent(event2);
-
-            var event3 = new Event
-            {
-                Location = "Knoxville",
-                Date = new DateTime(1800, 09, 15),
-                Host = "Oprah Winfrey",
-                IsPutRight = false,
-            };
-            eventRepository.AddEvent(event3);
-
-            var event4 = new Event
-            {
-                Location = "Future 1",
-                Date = new DateTime(2000, 09, 15),
-                Host = "Oprah Winfrey",
-                IsPutRight = false,
-            };
-            eventRepository.AddEvent(event4);
-            var event5 = new Event
-            {
-                Location = "Future 2",
-                Date = new DateTime(2010, 09, 15),
-                Host = "Oprah Winfrey",
-                IsPutRight = false,
-            };
-            eventRepository.AddEvent(event5);
-            var event6 = new Event
-            {
-                Location = "Future 3",
-                Date = new DateTime(2020, 09, 15),
-                Host = "Oprah Winfrey",
-                IsPutRight = false,
-            };
-            eventRepository.AddEvent(event6);
-
-            var allEvents = eventRepository.GetAllEvents();
-
-            eventRepository.UpdateEvent(event1.Id);
-
-            //foreach (var singleEvent in allEvents)
-            //{
-            //    Console.WriteLine($"Location: {singleEvent.Location}");
-            //    Console.WriteLine($"Date: {singleEvent.Date}");
-            //    Console.WriteLine($"Host: {singleEvent.Host}");
-            //    Console.WriteLine($"Made Right? {singleEvent.IsPutRight}");
-            //    Console.WriteLine();
-            //}
 
             var currentDateTest = eventRepository.DistanceBetweenDates(event2.Date);
 
