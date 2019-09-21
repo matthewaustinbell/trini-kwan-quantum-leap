@@ -42,28 +42,68 @@ namespace TriniKwanQuantumLeap
 
             var event4 = new Event
             {
-                Location = "Future 1",
-                Date = new DateTime(2000, 09, 15),
-                Host = "Oprah Winfrey",
+                Location = "Seattle",
+                Date = new DateTime(1967, 08, 20),
+                Host = "Ed Dickson",
                 IsPutRight = false,
             };
             eventRepository.AddEvent(event4);
+
             var event5 = new Event
             {
-                Location = "Future 2",
-                Date = new DateTime(2010, 09, 15),
-                Host = "Oprah Winfrey",
+                Location = "Boston",
+                Date = new DateTime(2003, 09, 17),
+                Host = "Mookie Betts",
                 IsPutRight = false,
             };
             eventRepository.AddEvent(event5);
+
             var event6 = new Event
             {
-                Location = "Future 3",
-                Date = new DateTime(2020, 09, 15),
-                Host = "Oprah Winfrey",
+                Location = "Los Angeles",
+                Date = new DateTime(2080, 02, 08),
+                Host = "Magic Johnson",
                 IsPutRight = false,
             };
             eventRepository.AddEvent(event6);
+
+            var event7 = new Event
+            {
+                Location = "Toledo",
+                Date = new DateTime(1974, 02, 09),
+                Host = "",
+                IsPutRight = false,
+            };
+            eventRepository.AddEvent(event7);
+
+            var event8 = new Event
+            {
+                Location = "Raleigh",
+                Date = new DateTime(2092, 02, 16),
+                Host = "Clay Aiken",
+                IsPutRight = false,
+            };
+            eventRepository.AddEvent(event8);
+
+            var event9 = new Event
+            {
+                Location = "St. Petersburg",
+                Date = new DateTime(2054, 02, 04),
+                Host = "Ji-man Choi",
+                IsPutRight = false,
+            };
+            eventRepository.AddEvent(event9);
+
+            var event10 = new Event
+            {
+                Location = "Indianapolis",
+                Date = new DateTime(2024, 02, 02),
+                Host = "Jacob Brissett",
+                IsPutRight = false,
+            };
+            eventRepository.AddEvent(event10);
+
+
 
             // Creates a Dictionary and adds each event to it
             Dictionary<int, Event> eventDictionary = new Dictionary<int, Event>();
