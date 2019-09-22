@@ -18,10 +18,7 @@ namespace TriniKwanQuantumLeap
             var eventRepository = new EventRepository();
             var leaperRepository = new LeaperRepository();
 
-            var myLeaper = new Leaper()
-            {
-                Name = "Bob",
-            };
+            var myLeaper = new Leaper();
 
             leaperRepository.AddLeaper(myLeaper);
 
@@ -125,7 +122,11 @@ namespace TriniKwanQuantumLeap
                 eventDictionary.Add(i, eventRepository.GetAllEvents()[i]);
             }
 
+            // Checks if the leaper has leaped yet 
+            // If they have and leap again the "would you like to leap" prompt is skipped
+            int leapCount = 0;
 
+<<<<<<< HEAD
             // mark's code begin here
             Console.WriteLine(" After theorizing that time travel could happen within your own lifetime,\n" +
                               " you stepped into the Quantum Leap accelerator, and vanished.\n " +
@@ -149,52 +150,120 @@ namespace TriniKwanQuantumLeap
                 }
 
                 if (answer == "Y")
+=======
+            void LeapPrompt()
+            {
+               while (true)
+>>>>>>> master
                 {
-                    // Loops through the dictionary and prints each event, also adds 1 to each Key so 
-                    // that they don't start with 0
-                    foreach (var singleEvent in eventDictionary)
+                    var budget = new Budget();
+
+                    Console.WriteLine((leapCount == 0 ? " After theorizing that time travel could happen within your own lifetime,\n" +
+                  " you stepped into the Quantum Leap accelerator, and vanished.\n " +
+                  "When you awoke you found yourself trapped in the past,\n" +
+                  " facing a mirror image that was not your own.\n" +
+                  " Now driven by an unknown force to change history for the better\n" +
+                  " you are guided by AI (a Hologram that only you can see and hear).\n AI asks in a robotic voice... \n " : null));
+
+                    Console.WriteLine((leapCount == 0 ? $"Welcome, traveller. Would you like to take a leap? (y/n)" : null));
+                    string answer = (leapCount == 0 ? Console.ReadLine().ToUpper() : "Y");
+                    
+                    if (answer == "N")
                     {
-                        Console.WriteLine($"{singleEvent.Key + 1} Location: {singleEvent.Value.Location}");
-                        Console.WriteLine($"Date: {singleEvent.Value.Date}");
-                        Console.WriteLine($"Host: {singleEvent.Value.Host}");
-                        Console.WriteLine($"Made Right? {singleEvent.Value.IsPutRight}");
-                        Console.WriteLine();
+                        Console.WriteLine("FINE! BE BORING!");
+                        break;
                     }
-                    // Expects the user to enter the number associated with the event  
-                    // and subtracts 1 to match dictionary's index
-                    Console.WriteLine("Please select the leap you would like to complete");
-                    int chosenLeapIndex = int.Parse(Console.ReadLine());
-                    var chosenLeap = eventDictionary[chosenLeapIndex - 1];
 
-                    // Returns the number of days between today and the chosen leap
-                    var attemptedLeap = eventRepository.DaysBetweenEvents(eventRepository.StartingDate(), chosenLeap.Date);
+                    if (answer == "Y")
+                    {
+                        if (myLeaper.Name == null)
+                        {
+                            Console.WriteLine("You are very brave to attempt such a feat. What's your name?");
 
-                    // Uses TimeSpan, that's where .Days comes from 
-                    Console.WriteLine($"Days to leap: {Math.Abs(attemptedLeap.Days)}");
+                            var nameResponse = Console.ReadLine();
 
-                    // Prints cost to leap between two dates
-                    Console.WriteLine($"Cost to leap: ${budget.TotalLeapCost(attemptedLeap)}");
+                            myLeaper.Name = nameResponse;
+                        }
 
-                // Checks budget
-                    budget.checkBalance(budget.TotalLeapCost(attemptedLeap), chosenLeap);
+                        // Loops through the dictionary and prints each event, also adds 1 to each Key so 
+                        // that they don't start with 0
+                        foreach (var singleEvent in eventDictionary)
+                        {
+                            Console.WriteLine($"{singleEvent.Key + 1} Location: {singleEvent.Value.Location}");
+                            Console.WriteLine($"Date: {singleEvent.Value.Date}");
+                            Console.WriteLine($"Host: {singleEvent.Value.Host}");
+                            Console.WriteLine($"Made Right? {singleEvent.Value.IsPutRight}");
+                            Console.WriteLine();
+                        }
+                        // Expects the user to enter the number associated with the event  
+                        // and subtracts 1 to match dictionary's index
+                        Console.WriteLine($"Please select the leap you would like to complete, {myLeaper.Name}.");
+                        int chosenLeapIndex = int.Parse(Console.ReadLine());
+                        var chosenLeap = eventDictionary[chosenLeapIndex - 1];
 
-                    leaperRepository.TakeTheLeap(chosenLeap, myLeaper);
+                        // Returns the number of days between today and the chosen leap
+                        var attemptedLeap = eventRepository.DaysBetweenEvents(eventRepository.StartingDate(), chosenLeap.Date);
 
-                Console.WriteLine($"You are now inhabiting the body of {myLeaper.CurrentEventObj.Host}.");
+                        // Uses TimeSpan, that's where .Days comes from 
+                        Console.WriteLine($"Days to leap: {Math.Abs(attemptedLeap.Days)}");
 
-                Console.WriteLine("You arrived just in time to make this situation right.");  
+                        // Prints cost to leap between two dates
+                        Console.WriteLine($"Cost to leap: ${budget.TotalLeapCost(attemptedLeap)}");
 
-                    var futureDateToChange = eventRepository.UpdateEvent(chosenLeap.Date);
+                        // Checks budget
+                        budget.checkBalance(budget.TotalLeapCost(attemptedLeap), chosenLeap);
 
-                Console.WriteLine($"However, your actions have also changed the {futureDateToChange.Location}. Take heed. Every action you take throughout time can change the course of history.");
+                        leaperRepository.TakeTheLeap(chosenLeap, myLeaper);
 
-                    break;
+                        Console.WriteLine($"You are now inhabiting the body of {myLeaper.CurrentEventObj.Host}.");
 
+                        Console.WriteLine("You arrived just in time to make this situation right.");
+
+                        var futureDateToChange = eventRepository.UpdateEvent(chosenLeap.Date);
+
+                        Console.WriteLine($"However, your actions have also changed the {futureDateToChange.Location}.");
+
+                        Console.WriteLine("Take heed. Every action you take throughout time can change the course of history.");
+
+                        break;
+
+                    }
+                    Console.WriteLine("Please reply with y or n");
+                    answer = Console.ReadLine().ToUpper();
                 }
-                Console.WriteLine("Please reply with y or n");
-                answer = Console.ReadLine().ToUpper();
-                
             }
+
+            void Prompter()
+            {
+                Console.WriteLine("1. Make another leap");
+                Console.WriteLine("2. See leap history");
+                Console.WriteLine("3. End Journey");
+                int resp = int.Parse(Console.ReadLine());
+                ExecuteProgram(resp);
+            }
+
+            void ExecuteProgram(int response)
+            {
+                    if (response == 1)
+                    {
+                        LeapPrompt();
+                        Prompter();
+                    }
+                    else if (response == 2)
+                    {
+                        leaperRepository.GetLeapHistory(myLeaper);
+                        Prompter();
+                    }
+                    else if (response == 3)
+                    {
+                        Console.WriteLine("Adios!");
+                        return;
+                    }              
+            }
+
+            LeapPrompt();
+            leapCount++;
+            Prompter();
 
         }
     }
