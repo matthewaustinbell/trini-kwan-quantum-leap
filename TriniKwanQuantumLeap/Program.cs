@@ -156,6 +156,9 @@ namespace TriniKwanQuantumLeap
                     {
                         // Loops through the dictionary and prints each event, also adds 1 to each Key so 
                         // that they don't start with 0
+
+                        // Filter out current event if user has already made a leap
+
                         foreach (var singleEvent in eventDictionary)
                         {
                             Console.WriteLine($"{singleEvent.Key + 1} Location: {singleEvent.Value.Location}");
