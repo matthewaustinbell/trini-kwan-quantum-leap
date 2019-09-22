@@ -8,8 +8,8 @@ namespace TriniKwanQuantumLeap
     class Budget
     {
         public double LeapingCost { get; set; }
-        public double _initialBalance = 5000000;
-        public double FinalBalance { get; set; }
+        public double _initialBalance = 50000000;
+        public double FinalBalance { get; set; } 
         public double LeapFunds { get; set; }
 
         public void checkBalance(double costToLeap, Event destination)
@@ -18,7 +18,7 @@ namespace TriniKwanQuantumLeap
             if (_initialBalance >= costToLeap)
             {
                 Console.WriteLine("Leap Authorized");
-                Console.WriteLine($"You have arrived in {destination.Location}, the year is {destination.Date.Year}");
+                Console.WriteLine($"You have arrived in {destination.Location}, the year is {destination.Date.Year}. You have {_initialBalance - costToLeap} remaining");
                 // call the Leap method from the Leap repository
                 // deduct cost of leap from initial balance
             }
@@ -43,8 +43,10 @@ namespace TriniKwanQuantumLeap
                         }
                         _initialBalance += LeapFunds;
                         _initialBalance -= costToLeap;
+
                         Console.WriteLine($"${LeapFunds} has been added to your account. Your balance is ${_initialBalance}. Leap Authorized!");
                         Console.WriteLine($"You have arrived at the {destination.Location}, the year is {destination.Date.Year}.");
+
                         break;
                         // call method that authorize leap
                         // deduct cos of leap
@@ -70,10 +72,6 @@ namespace TriniKwanQuantumLeap
 
         }
 
-        public void EventTimeSpan()
-        {
-
-        }
     }
 
 }
