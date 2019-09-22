@@ -8,16 +8,17 @@ namespace TriniKwanQuantumLeap
 {
     class Program
     {
+        public void intro()
+        {
+
+        }
         static void Main(string[] args)
         {
             // Initialize Event Repository and create events
             var eventRepository = new EventRepository();
             var leaperRepository = new LeaperRepository();
 
-            var myLeaper = new Leaper()
-            {
-                Name = "Bob",
-            };
+            var myLeaper = new Leaper();
 
             leaperRepository.AddLeaper(myLeaper);
 
@@ -121,20 +122,26 @@ namespace TriniKwanQuantumLeap
                 eventDictionary.Add(i, eventRepository.GetAllEvents()[i]);
             }
 
+            // Checks if the leaper has leaped yet 
+            // If they have and leap again the "would you like to leap" prompt is skipped
+            int leapCount = 0;
 
-            // mark's code begin here
-            Console.WriteLine(" After theorizing that time travel could happen within your own lifetime,\n" +
-                              " you stepped into the Quantum Leap accelerator, and vanished.\n " +
-                              "When you awoke you found yourself trapped in the past,\n" +
-                              " facing a mirror image that was not your own.\n" +
-                              " Now driven by an unknown force to change history for the better\n" +
-                              " you are guided by AI (a Hologram that only you can see and hear).\n AI asks in a robotic voice... \n ");
- 
-                Console.WriteLine("HELLO THERE! WOULD YOU LIKE TO TAKE A LEAP? REPLY WITH Y OR N\n");
-                string answer = Console.ReadLine().ToUpper();
-                while (true)
+            void LeapPrompt()
+            {
+               while (true)
                 {
                     var budget = new Budget();
+
+                    Console.WriteLine((leapCount == 0 ? " After theorizing that time travel could happen within your own lifetime,\n" +
+                  " you stepped into the Quantum Leap accelerator, and vanished.\n " +
+                  "When you awoke you found yourself trapped in the past,\n" +
+                  " facing a mirror image that was not your own.\n" +
+                  " Now driven by an unknown force to change history for the better\n" +
+                  " you are guided by AI (a Hologram that only you can see and hear).\n AI asks in a robotic voice... \n " : null));
+
+                    Console.WriteLine((leapCount == 0 ? $"Welcome, traveller. Would you like to take a leap? (y/n)" : null));
+                    string answer = (leapCount == 0 ? Console.ReadLine().ToUpper() : "Y");
+                    
                     if (answer == "N")
                     {
                         Console.WriteLine("FINE! BE BORING!");
@@ -143,8 +150,15 @@ namespace TriniKwanQuantumLeap
 
                     if (answer == "Y")
                     {
-                        do
+                        if (myLeaper.Name == null)
                         {
+                            Console.WriteLine("You are very brave to attempt such a feat. What's your name?");
+
+                            var nameResponse = Console.ReadLine();
+
+                            myLeaper.Name = nameResponse;
+                        }
+
                         // Loops through the dictionary and prints each event, also adds 1 to each Key so 
                         // that they don't start with 0
                         foreach (var singleEvent in eventDictionary)
@@ -157,7 +171,7 @@ namespace TriniKwanQuantumLeap
                         }
                         // Expects the user to enter the number associated with the event  
                         // and subtracts 1 to match dictionary's index
-                        Console.WriteLine("Please select the leap you would like to complete");
+                        Console.WriteLine($"Please select the leap you would like to complete, {myLeaper.Name}.");
                         int chosenLeapIndex = int.Parse(Console.ReadLine());
                         var chosenLeap = eventDictionary[chosenLeapIndex - 1];
 
@@ -179,22 +193,51 @@ namespace TriniKwanQuantumLeap
 
                         Console.WriteLine("You arrived just in time to make this situation right.");
 
-
                         var futureDateToChange = eventRepository.UpdateEvent(chosenLeap.Date);
 
-                        Console.WriteLine($"However, your actions have also changed the {futureDateToChange.Location}. Take heed. Every action you take throughout time can change the course of history.");
+                        Console.WriteLine($"However, your actions have also changed the {futureDateToChange.Location}.");
 
-                        Console.WriteLine("Would you like to leap again? (y/n)");
+                        Console.WriteLine("Take heed. Every action you take throughout time can change the course of history.");
 
-                    } while (Console.ReadLine().ToUpper() == "Y");
+                        break;
 
-                } 
+                    }
+                    Console.WriteLine("Please reply with y or n");
+                    answer = Console.ReadLine().ToUpper();
+                }
+            }
 
-                Console.WriteLine("Please reply with y or n");
+            void Prompter()
+            {
+                Console.WriteLine("1. Make another leap");
+                Console.WriteLine("2. See leap history");
+                Console.WriteLine("3. End Journey");
+                int resp = int.Parse(Console.ReadLine());
+                ExecuteProgram(resp);
+            }
 
-                answer = Console.ReadLine().ToUpper();
+            void ExecuteProgram(int response)
+            {
+                    if (response == 1)
+                    {
+                        LeapPrompt();
+                        Prompter();
+                    }
+                    else if (response == 2)
+                    {
+                        leaperRepository.GetLeapHistory(myLeaper);
+                        Prompter();
+                    }
+                    else if (response == 3)
+                    {
+                        Console.WriteLine("Adios!");
+                        return;
+                    }              
+            }
 
-            } 
+            LeapPrompt();
+            leapCount++;
+            Prompter();
 
         }
     }
