@@ -18,7 +18,7 @@ namespace TriniKwanQuantumLeap
             if (_initialBalance >= costToLeap)
             {
                 Console.WriteLine("Leap Authorized");
-                Console.WriteLine($"You have arrived in {destination.Location}, the year is {destination.Date.Year}. You have {_initialBalance - costToLeap} remaining");
+                Console.WriteLine($"You have arrived at the {destination.Location}, the year is {destination.Date.Year}. You have ${_initialBalance - costToLeap} remaining");
                 // call the Leap method from the Leap repository
                 // deduct cost of leap from initial balance
             }
@@ -48,12 +48,12 @@ namespace TriniKwanQuantumLeap
                         Console.WriteLine($"You have arrived at the {destination.Location}, the year is {destination.Date.Year}.");
 
                         break;
-                        // call method that authorize leap
-                        // deduct cos of leap
+
                     }
                     if (reply == "N")
                     {
-                        Console.WriteLine("GoodLuck on your ventures");
+                        Console.WriteLine("Good luck on your ventures");
+
                         Environment.Exit(0);
                     }
                     Console.WriteLine("Please reply with y or n");

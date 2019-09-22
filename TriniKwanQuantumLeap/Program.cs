@@ -18,10 +18,7 @@ namespace TriniKwanQuantumLeap
             var eventRepository = new EventRepository();
             var leaperRepository = new LeaperRepository();
 
-            var myLeaper = new Leaper()
-            {
-                Name = "Bob",
-            };
+            var myLeaper = new Leaper();
 
             leaperRepository.AddLeaper(myLeaper);
 
@@ -125,7 +122,6 @@ namespace TriniKwanQuantumLeap
                 eventDictionary.Add(i, eventRepository.GetAllEvents()[i]);
             }
 
-
             // Checks if the leaper has leaped yet 
             // If they have and leap again the "would you like to leap" prompt is skipped
             int leapCount = 0;
@@ -142,10 +138,10 @@ namespace TriniKwanQuantumLeap
                   " facing a mirror image that was not your own.\n" +
                   " Now driven by an unknown force to change history for the better\n" +
                   " you are guided by AI (a Hologram that only you can see and hear).\n AI asks in a robotic voice... \n " : null));
-                    Console.WriteLine((leapCount == 0 ? "HELLO THERE! WOULD YOU LIKE TO TAKE A LEAP? REPLY WITH Y OR N" : null));
+
+                    Console.WriteLine((leapCount == 0 ? $"Welcome, traveller. Would you like to take a leap? (y/n)" : null));
                     string answer = (leapCount == 0 ? Console.ReadLine().ToUpper() : "Y");
                     
-
                     if (answer == "N")
                     {
                         Console.WriteLine("FINE! BE BORING!");
@@ -154,6 +150,15 @@ namespace TriniKwanQuantumLeap
 
                     if (answer == "Y")
                     {
+                        if (myLeaper.Name == null)
+                        {
+                            Console.WriteLine("You are very brave to attempt such a feat. What's your name?");
+
+                            var nameResponse = Console.ReadLine();
+
+                            myLeaper.Name = nameResponse;
+                        }
+
                         // Loops through the dictionary and prints each event, also adds 1 to each Key so 
                         // that they don't start with 0
 
@@ -169,7 +174,7 @@ namespace TriniKwanQuantumLeap
                         }
                         // Expects the user to enter the number associated with the event  
                         // and subtracts 1 to match dictionary's index
-                        Console.WriteLine("Please select the leap you would like to complete");
+                        Console.WriteLine($"Please select the leap you would like to complete, {myLeaper.Name}.");
                         int chosenLeapIndex = int.Parse(Console.ReadLine());
                         var chosenLeap = eventDictionary[chosenLeapIndex - 1];
 
@@ -177,25 +182,25 @@ namespace TriniKwanQuantumLeap
                         var attemptedLeap = eventRepository.DaysBetweenEvents(eventRepository.StartingDate(), chosenLeap.Date);
 
                         // Uses TimeSpan, that's where .Days comes from 
-                        Console.WriteLine($"Days to leap {Math.Abs(attemptedLeap.Days)}");
+                        Console.WriteLine($"Days to leap: {Math.Abs(attemptedLeap.Days)}");
 
                         // Prints cost to leap between two dates
-                        Console.WriteLine($"Cost to leap ${budget.TotalLeapCost(attemptedLeap)}");
+                        Console.WriteLine($"Cost to leap: ${budget.TotalLeapCost(attemptedLeap)}");
 
                         // Checks budget
                         budget.checkBalance(budget.TotalLeapCost(attemptedLeap), chosenLeap);
 
                         leaperRepository.TakeTheLeap(chosenLeap, myLeaper);
 
-                        Console.WriteLine($"You've taken the leap and your host is {myLeaper.CurrentEventObj.Host}.");
+                        Console.WriteLine($"You are now inhabiting the body of {myLeaper.CurrentEventObj.Host}.");
 
+                        Console.WriteLine("You arrived just in time to make this situation right.");
 
-                Console.WriteLine("You arrived just in time to make this situation right.");  
+                        var futureDateToChange = eventRepository.UpdateEvent(chosenLeap.Date);
 
-                var futureDateToChange = eventRepository.UpdateEvent(chosenLeap.Date);
+                        Console.WriteLine($"However, your actions have also changed the {futureDateToChange.Location}.");
 
-                Console.WriteLine($"However, your actions have also changed the {futureDateToChange.Location}. Take heed. Every action you take throughout time can change the course of history.");
-
+                        Console.WriteLine("Take heed. Every action you take throughout time can change the course of history.");
 
                         break;
 
@@ -213,8 +218,6 @@ namespace TriniKwanQuantumLeap
                 int resp = int.Parse(Console.ReadLine());
                 ExecuteProgram(resp);
             }
-
-
 
             void ExecuteProgram(int response)
             {
