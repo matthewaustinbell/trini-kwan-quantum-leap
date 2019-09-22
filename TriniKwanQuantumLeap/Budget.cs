@@ -51,6 +51,7 @@ namespace TriniKwanQuantumLeap
                     }
                     if (reply == "N")
                     {
+                        Console.Clear();
                         Console.WriteLine("GoodLuck on your ventures");
                         Environment.Exit(0);
                     }

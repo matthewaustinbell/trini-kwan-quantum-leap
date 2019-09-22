@@ -133,6 +133,7 @@ namespace TriniKwanQuantumLeap
                               " facing a mirror image that was not your own.\n" +
                               " Now driven by an unknown force to change history for the better\n" +
                               " you are guided by AI (a Hologram that only you can see and hear).\n AI asks in a robotic voice... \n ");
+
             Console.WriteLine("HELLO THERE! WOULD YOU LIKE TO TAKE A LEAP? REPLY WITH Y OR N\n");
             string answer = Console.ReadLine().ToUpper();
             while (true)
@@ -140,6 +141,7 @@ namespace TriniKwanQuantumLeap
                 var budget = new Budget();
                 if (answer == "N")
                 {
+                    Console.Clear();
                     Console.WriteLine("FINE! BE BORING!");
                     break;
                 }
