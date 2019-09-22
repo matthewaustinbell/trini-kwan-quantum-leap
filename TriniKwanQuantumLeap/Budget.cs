@@ -57,6 +57,7 @@ namespace TriniKwanQuantumLeap
                     }
                     Console.WriteLine("Please reply with y or n");
                     reply = Console.ReadLine().ToUpper();
+                    
                 }
 
             }

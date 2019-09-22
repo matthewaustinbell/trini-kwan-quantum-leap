@@ -143,7 +143,9 @@ namespace TriniKwanQuantumLeap
                 {
                     Console.Clear();
                     Console.WriteLine("FINE! BE BORING!");
+                    Environment.Exit(0);
                     break;
+                    
                 }
 
                 if (answer == "Y")
