@@ -33,15 +33,17 @@ namespace TriniKwanQuantumLeap.Data
             {
                 if (leapHistory[i] == leapHistory[0])
                 {
-                    Console.WriteLine("First Event Visited");
+                    Console.WriteLine("First Event Visited...");
+                    Console.WriteLine();
                 }
                 if (i == lastEventIndex && i != 0)
                 {
-                    Console.WriteLine("Most Recent Visit");
+                    Console.WriteLine("Most Recent Visit...");
+                    Console.WriteLine();
                 }
-                Console.WriteLine($"Location {leapHistory[i].Location}");
-                Console.WriteLine($"Event Date {leapHistory[i].Date}");
-                Console.WriteLine($"Hosted By {leapHistory[i].Host}");
+                Console.WriteLine($"Location: {leapHistory[i].Location}");
+                Console.WriteLine($"Event Date: {leapHistory[i].Date}");
+                Console.WriteLine($"Hosted By: {leapHistory[i].Host}");
                 Console.WriteLine();
             }
         }
