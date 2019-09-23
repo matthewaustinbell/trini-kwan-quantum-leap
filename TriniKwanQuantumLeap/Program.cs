@@ -183,21 +183,31 @@ namespace TriniKwanQuantumLeap
 
                         // Filter out current event if user has already made a leap
 
-                        //if (myLeaper.CurrentEventObj != null)
-                        //{
-                        //    var currentEventToRemove = eventDictionary.First(x => x.Value == myLeaper.CurrentEventObj).Key;
-                        //    eventDictionary.Remove(currentEventToRemove);
-                        //}
+                        // Removes event permanently
+
+                        if (myLeaper.CurrentEventObj != null)
+                        {
+                            var currentEventToRemove = eventDictionary.First(x => x.Value == myLeaper.CurrentEventObj).Key;
+                            eventDictionary.Remove(currentEventToRemove);
+                        }
 
                         foreach (var singleEvent in eventDictionary)
                         {
-
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine();
-                            Console.WriteLine((singleEvent.Value == myLeaper.CurrentEventObj ? null : $"{singleEvent.Key + 1} Location: {singleEvent.Value.Location}"));              
-                            Console.WriteLine((singleEvent.Value == myLeaper.CurrentEventObj ? null : $"Date: {singleEvent.Value.Date}"));                          
-                            Console.WriteLine((singleEvent.Value == myLeaper.CurrentEventObj ? null : $"Host: {singleEvent.Value.Host}"));                         
-                            Console.WriteLine((singleEvent.Value == myLeaper.CurrentEventObj ? null : $"Made Right? {singleEvent.Value.IsPutRight}"));
+                            Console.WriteLine($"{singleEvent.Key + 1} Location: {singleEvent.Value.Location}");
+                            Console.WriteLine($"Date: {singleEvent.Value.Date}");
+                            Console.WriteLine($"Host: {singleEvent.Value.Host}");
+                            Console.WriteLine($"Made Right? {singleEvent.Value.IsPutRight}");
+
+                            // Doesn't let current event write to the console when making a new leap
+
+                            //Console.ForegroundColor = ConsoleColor.Yellow;
+                            //Console.WriteLine();
+                            //Console.WriteLine((singleEvent.Value == myLeaper.CurrentEventObj ? null : $"{singleEvent.Key + 1} Location: {singleEvent.Value.Location}"));              
+                            //Console.WriteLine((singleEvent.Value == myLeaper.CurrentEventObj ? null : $"Date: {singleEvent.Value.Date}"));                          
+                            //Console.WriteLine((singleEvent.Value == myLeaper.CurrentEventObj ? null : $"Host: {singleEvent.Value.Host}"));                         
+                            //Console.WriteLine((singleEvent.Value == myLeaper.CurrentEventObj ? null : $"Made Right? {singleEvent.Value.IsPutRight}"));
                         }
                         Console.ForegroundColor = ConsoleColor.White;
                         // Expects the user to enter the number associated with the event  
