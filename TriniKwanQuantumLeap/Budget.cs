@@ -52,12 +52,14 @@ namespace TriniKwanQuantumLeap
                     }
                     if (reply == "N")
                     {
-                        Console.WriteLine("Good luck on your ventures");
 
+                        Console.Clear();
+                        Console.WriteLine("GoodLuck on your ventures");
                         Environment.Exit(0);
                     }
                     Console.WriteLine("Please reply with y or n");
                     reply = Console.ReadLine().ToUpper();
+                    
                 }
 
             }

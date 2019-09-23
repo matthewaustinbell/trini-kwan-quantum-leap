@@ -56,6 +56,14 @@ namespace TriniKwanQuantumLeap.Data
                     futureDays.Add(singleEvent);
                 }
             }
+            if (futureDays.Count == 0)
+            {
+                var lastEvent = _events.Find(x => x.Date == currentDate);
+
+                lastEvent.IsPutRight = true;
+
+                return lastEvent;
+            }
 
             if (futureDays.Count == 0)
             {
