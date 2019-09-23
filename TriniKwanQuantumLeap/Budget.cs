@@ -30,13 +30,13 @@ namespace TriniKwanQuantumLeap
                 {
                     if (reply == "Y")
                     {
-                        Console.WriteLine("Enter an amount greater than $1000");
+                        Console.WriteLine($"Enter an amount greater than or equal to ${costToLeap}");
                         LeapFunds = double.Parse(Console.ReadLine());
                         // Adding data validation for if the user enters less than $1000
-                        if (LeapFunds < 1000)
+                        if (LeapFunds < costToLeap)
                         {
                             Console.WriteLine("You're bad at math but we fixed it for you");
-                            LeapFunds = LeapFunds + 1000;
+                            LeapFunds = LeapFunds + 100000000;
                             Console.WriteLine($"You added a total of ${LeapFunds}");
                             // Need to route user back to start
                             break;
